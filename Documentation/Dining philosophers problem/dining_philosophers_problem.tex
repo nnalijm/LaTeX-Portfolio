@@ -1,0 +1,215 @@
+\documentclass[a4paper, 12pt]{report}
+
+\usepackage[T1]{fontenc}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{blindtext}
+%\usepackage[left=25mm, right=25mm, top=35mm, bottom=35mm]{geometry}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{uni.bib}
+
+\graphicspath{{./pix/}}
+
+\renewcommand\contentsname{Spis treści}
+
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,	
+	filecolor=magenta,      
+	urlcolor=cyan,
+	pdftitle={SO_Projekt},
+	pdfpagemode=FullScreen,
+}
+\lstset{language=C++,
+	basicstyle=\scriptsize,
+	breakatwhitespace=false,
+	breaklines=true,
+	commentstyle=\color{green}\ttfamily,
+	frame=single,
+	keepspaces=false,
+	keywordstyle=\color{blue}\ttfamily,
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	stringstyle=\color{red}\ttfamily,
+	tabsize=2,
+	morecomment=[l][\color{magenta}]{\#}
+}
+
+
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+
+\vspace*{1cm}
+
+\textbf{Systemy Operacyjne\\ Projekt}
+
+\vspace{0.5cm}
+Problem ucztujących filozofów
+
+\vspace{1.5cm}
+
+\textbf{Stanislau Antanovich}
+
+\vfill
+
+\vspace{0.8cm}
+
+\includegraphics[scale=0.7]{logo.png}
+
+\end{center}
+\end{titlepage}
+
+\tableofcontents
+
+\listoffigures
+\newpage
+
+\chapter{Wprowadzenie}
+\section{Opis problemu}
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+		\centering
+		\includegraphics[width=0.4\textwidth]{problem.png}
+		\caption{\textit{Filozofy}}
+\end{wrapfigure}
+
+Pięciu filozofów siedzi przy stole i każdy wykonuje jedną z dwóch czynności – albo je, albo rozmyśla. Stół jest okrągły, przed każdym z nich znajduje się miska ze spaghetti, a pomiędzy każdą sąsiadującą parą filozofów leży widelec, a więc każda osoba ma przy sobie dwie sztuki – po swojej lewej i prawej stronie. Ponieważ jedzenie potrawy jest trudne przy użyciu jednego widelca, zakłada się, że każdy filozof korzysta z dwóch. Dodatkowo nie ma możliwości skorzystania z widelca, który nie znajduje się bezpośrednio przed daną osobą. Problem ucztujących filozofów jest czasami przedstawiany przy użyciu ryżu, który musi być jedzony dwiema pałeczkami, co lepiej obrazuje sytuację.
+
+Filozofowie nigdy nie rozmawiają ze sobą, co stwarza zagrożenie zakleszczenia w sytuacji, gdy każdy z nich zabierze lewy widelec i będzie czekał na prawy (lub na odwrót).
+
+Aby zilustrować problem zakleszczenia możemy przyjąć, że opisany system wchodzi w stan zakleszczenia w przypadku, gdy wystąpi „krąg nieuprawnionych zgłoszeń”. W takiej sytuacji filozof P1 czeka na widelec zabrany przez filozofa P2, który czeka na widelec filozofa P3 itd. tworząc cykliczny łańcuch.
+
+Głodzenie (zamierzona gra słów w oryginalnym opisie problemu) może także wystąpić niezależnie od zakleszczenia w sytuacji, gdy zostanie wzięta pod uwagę kwestia czasu oczekiwania filozofa na dwa wolne widelce.
+
+Przykładowo, może zostać wprowadzona reguła, że filozof czeka pięć minut z widelcem w ręku, aż drugi widelec będzie dostępny. W sytuacji, gdy nie otrzyma kompletu, odkłada go i czeka kolejne pięć minut przed podjęciem kolejnej próby zdobycia pary sztućców. Taki schemat eliminuje możliwość zakleszczenia (system może zmieniać swój stan) jednak dalej jest podatny na problem livelock. Jeśli wszyscy filozofowie wejdą do jadalni jednocześnie, następnie dokładnie w tym samym czasie chwycą za swój lewy widelec, to po pięciu minutach wszyscy go odłożą, poczekają pięć minut, znowu go zabiorą itd.
+
+Brak dostępnych widelców jest analogią braku dostępu do współdzielonych zasobów w rzeczywistym programowaniu komputerów, w sytuacji zwanej współbieżnością. Blokowanie zasobów jest powszechną techniką zapewniania wyłącznego dostępu do zasobu przez jeden program lub moduł kodu. Gdy zasób zostaje zajęty przez program, każdy następny „zainteresowany” nim program jest blokowany do czasu zwolnienia zasobu. Zależnie od okoliczności, jeśli kilka programów bierze udział w blokowaniu zasobu, możliwe jest zakleszczenie.
+
+Na przykład: jeden program potrzebuje dwóch plików do działania, więc jeśli uruchomimy dwa takie programy i zablokują one po jednym pliku, to oba programy będą czekały na zwolnienie drugiego pliku, co nigdy nie nastąpi.
+
+Problem ucztujących filozofów jest uogólnionym i abstrakcyjnym problemem używanym do tłumaczenia różnych zagadnień powstających wokół problemów dotyczących wzajemnego wykluczania. W powyższym przypadku problem zakleszczenia jest zilustrowany przy jego pomocy.
+
+\chapter{Możliwe rozwiązania}
+\section{Rozwiązanie przy pomocy kelnera}
+
+Relatywnie prostym rozwiązaniem jest wprowadzenie kelnera. Filozofowie będą pytać go o pozwolenie przed wzięciem widelca. Ponieważ kelner jest świadomy, które widelce są aktualnie w użyciu, może nimi rozporządzać zapobiegając zakleszczeniom.
+
+Gdy cztery widelce są w użyciu, następny filozof (chcący uzyskać możliwość jedzenia) będzie musiał czekać na pozwolenie kelnera. Pozwolenie nie zostanie udzielone do czasu zwolnienia widelca przez jednego z jedzących. Logika zostanie zachowana jeśli założymy, że filozofowie w pierwszej kolejności sięgają po widelec leżący po ich lewej stronie, a następnie po prawy (lub na odwrót).
+
+Aby zilustrować jak to działa, oznaczmy filozofów literami od \emph{A} do \emph{E} (zgodnie z ruchem wskazówek zegara). Jeśli \emph{A} i \emph{C} jedzą, cztery widelce są w użyciu. \emph{B} siedzi między \emph{A} i \emph{C}, więc nie ma w jego sąsiedztwie żadnego widelca, podczas gdy \emph{D} i \emph{E} mają jeden nieużywany widelec między sobą. Przypuśćmy, że \emph{D} chciałby coś zjeść. Gdyby podniósł piąty widelec, zaistniałoby prawdopodobieństwo zakleszczenia. Gdyby natomiast spytał kelnera o widelec, dostałby od niego polecenie czekania, a po zwolnieniu widelców \emph{D} byłby pierwszym, który dostanie komplet sztućców. Dzięki takiemu podejściu zostało wyeliminowane zagrożenie zakleszczenia.
+
+\section{Rozwiązanie przy użyciu hierarchii zasobów}
+
+Inne proste rozwiązanie jest osiągalne poprzez częściowe uporządkowanie lub ustalenie hierarchii dla zasobów (w tym wypadku widelców) i wprowadzenie zasady, że kolejność dostępu do zasobów jest ustalona przez ów porządek, a ich zwalnianie następuje w odwrotnej kolejności, oraz że dwa zasoby niepowiązane relacją porządku nie mogą zostać użyte przez jedną jednostkę w tym samym czasie.
+
+W tym przykładzie oznaczmy zasoby (widelce) numerami od 1 do 5 – w ustalonym porządku – oraz ustalmy, że jednostki (filozofowie) zawsze najpierw podnoszą widelec oznaczony niższym numerem, a dopiero potem ten oznaczony wyższym. Następnie, zwracając widelce, najpierw oddają widelec z wyższym numerem, a potem z niższym. W tym wypadku, jeśli czterech filozofów jednocześnie podniesie swoje widelce z niższymi numerami, na stole pozostanie widelec z najwyższym numerem, przez co piąty filozof nie będzie mógł podnieść żadnego. Ponadto tylko jeden filozof ma dostęp do widelca z najwyższym numerem, więc będzie on mógł jeść dwoma widelcami. Gdy skończy, najpierw odłoży widelec z najwyższym numerem, a następnie z niższym, umożliwiając kolejnemu filozofowi zabranie drugiego sztućca.
+
+Właśnie takie rozwiązanie swojego zadania proponował \textcite{dijkstra}.
+
+Pomimo że rozwiązanie hierarchii zasobów zapobiega zakleszczeniom, nie zawsze jest ono praktyczne, zwłaszcza gdy lista wymaganych zasobów nie jest z góry znana. Na przykład jeśli jednostka zajmuje zasoby 3 i 5, po czym stwierdza, że potrzebuje zasobu 2, musi zwolnić 5, a następnie 3, aby zająć 2, a następnie ponownie zająć 3 i 5 (w tej kolejności). Programy komputerowe, które uzyskują dostęp do dużej liczby rekordów w bazie danych, nie działałyby wydajnie, gdyby przed uzyskaniem dostępu do nowego wiersza musiały zwalniać dostęp do wierszy z wyższymi numerami, przez co metoda jest niepraktyczna dla takiego zastosowania.
+
+Jest to często najbardziej praktyczne rozwiązanie dla rzeczywistych problemów informatyki; poprzez ustalenie stałej hierarchii blokad oraz wymuszanie porządku nabywania blokad, można zapobiec temu problemowi.
+
+\section{Rozwiązanie \emph{Chandy/Misra}}
+
+W 1984, \textcite{chandy_misra} zaproponowali inny sposób rozwiązania problemu ucztujących filozofów, aby pozwolić dowolnym agentom (ponumerowanym P1,...,Pn) ubiegać się o dostęp do dowolnej liczby zasobów, w przeciwieństwie do rozwiązania Dijkstry. Rozwiązanie to jest także kompletnie rozproszone i nie wymaga centralnego zarządzania po inicjalizacji.
+
+\begin{enumerate}
+\item Dla każdej pary filozofów ubiegającej się o dostęp do zasobu stwórz widelec i wręcz go filozofowi z niższym identyfikatorem (ID). Każdy widelec może być \emph{brudny} lub \emph{czysty}. Na początku wszystkie widelce są \emph{brudne}.
+\item Gdy filozof chce użyć zbioru zasobów (tj. jeść), musi uzyskać widelec od konkurujących z nim sąsiadów. Dla każdego widelca, który nie jest w jego posiadaniu, wysyła żądanie w celu jego uzyskania.
+\item Gdy filozof z widelcem otrzymuje żądanie, zatrzymuje widelec, jeśli jest on \emph{czysty}, jeśli natomiast jest \emph{brudny}, to go przekazuje, uprzednio myjąc.
+\item Gdy filozof kończy jedzenie, wszystkie jego widelce stają się \emph{brudne}. Jeśli podczas jedzenia przyszło żądanie od innego filozofa, wtedy po skończeniu jedzenia, przekazywany jest czysty widelec.
+\end{enumerate}
+To rozwiązanie pozwala na duży stopień współbieżności rozwiązując dowolnie duży problem.
+
+
+\chapter{Realizajca własnego rozwiązania}
+
+\section{Opis programu}
+
+\subsection{Enum class \emph{State}}
+Reprezentuje stany naszych filozofów : THINKING and EATING (W tym kontekście, enum class State zdefiniowany jako bool oznacza, że typ State może przyjąć tylko dwie wartości: true lub false)
+
+\subsection{Class \emph{Scene}}
+
+Jest to abstrakcyjna klasa która umożliwia nam wykorzystywać tylko jedno okno a nie tworzyć nowe okna. Właśnie przez tą klasę będzie odbywało się rysowanie naszych obiektów
+
+\lstinputlisting[firstline=3, lastline=8]{./code/Scene.cpp}
+
+Tworzy w polu statycznej metody statyczny obiekt klasy RenderWindow i zwaraca go przez referencję co umozliwia że będzie stworzony tylko jeden raz i zmorzemy go zmieniać.
+
+\subsection{Class \emph{Window}}
+
+Klasa Window jest pochodną klasy Scene (musimy zdefiniować witrualną metodę draw() żeby klasa Window nie została abstrakcyjną) . Pola składowe font i text  wykorzystujemy dla wypisania „Multiplier”(szybkość z którą filozofowie wykonują odpowiednie działanie) . mtx jest naszym muteksem – narzędzie które wykorzystaliśmy dla synchronizacji wątków (w określony moment będzie zamykać dostęp do naszego „zasobu” – widelców, zrobiono to bardzo punktowo żeby nie pogorszyć wydajność). Manager wykorzystałem dla rozdzielenie logiki rysowania naszych obiektów i ich zarządzania (w naszym przypadku ustawienie ich „wartości”). 
+
+\lstinputlisting[firstline=12]{./code/Window.cpp}
+
+\subsection{Class \emph{Philosopher}}
+
+Jest pochodną klasy Element co umożliwia jej łatwe rysowanie na ekranie. Polami naszej klasy są time, czyli ilosć czasu z którym nasz  filozof będzie jadł lub myślał, i state, czyli stan w którym teraz jest nasz kolega (Je lub Mysli) oraz dwa wskazniki na obiekty klasy Fork leftFork i rigthFork , zrobiłem je wskaznikamin na Fork dlatego ze widelcy nie są prywatnoscią jakiegoś filozofa lecz kazdy z nich moze korzystac. Z waznych metod naszego programu:
+
+\lstinputlisting[firstline=17, lastline=22]{./code/Philosopher.h}
+
+\subsubsection{Metoda \emph{setState}}
+
+Ustawia filozofowi odpowiedni a razem z tym losowy czas z którym będzie miał ten stan, w zależności od stanu robi nasze widelce zajętymi żeby inni nie mogli je wykorzystać przez ten czas. I wywoluje metode update().
+
+\lstinputlisting[firstline=38, lastline=53]{./code/Philosopher.cpp}
+
+\subsubsection{Metoda \emph{update}}
+
+\lstinputlisting[firstline=63, lastline=70]{./code/Philosopher.cpp}
+
+\subsubsection{Metoda \emph{operator}}
+
+Właśnie tą metodę przekazujemy do wątków. W nieskończonej pętli filozof sprawdz czy moze zmienić swój stan na inny zalezy to od czasu ktory mu zostal na wykonanie stanu w ktorym teraz jest. Jezeli je to nie ma zadnego problemu zmienic stan na myślenie. Jeżeli mysli musi sprawdzic czy widelce obok sa wolne( musimy zamknać dostep innym wątkom żeby nie ``wpychali sie do koleji'' sprzynilo by to ze inny mogl by podczas sprawdzenie aktywowac widelce i ten sam moment nasz kolega tez by aktywowal widelce, czyli jeden mial by jeden widelec inny drugi, ale w sumie bylo by to nie predyktowane zachowanie sie programu).
+
+\lstinputlisting[firstline=77, lastline=93]{./code/Philosopher.cpp}
+
+\subsection{Class \emph{Manager}}
+
+Tu mamy 6 wątków( 5 ktore imitują zachowanie filozofów i jeden na interakcje z użytkownikiem). \emph{tableRadius} jest potrzebny zeby ustawic filozofow z widelcami w odpowidniej pozycji  ``wokol stolu''
+
+\lstinputlisting[firstline=3, lastline=20]{./code/Manager.cpp}
+
+W tej części kodu ustawiamy pozycje i „aktywne kolorki dla kazdego z filozofow” i lewy widelec.
+
+\lstinputlisting[firstline=22,lastline=24]{./code/Manager.cpp}
+
+Tu ustawiamy dla kazdego filozofa prawy widelec (lewy widelec dla kolegi po lewej stronie jest prawym widelcem).
+
+\lstinputlisting[firstline=26, lastline=28]{./code/Manager.cpp}
+
+Tu dla kazdego wątku przekazujemy przeładowany operator()() ,ktora imituje jego zachowanie, i odpowiednie parametry.
+
+\lstinputlisting[firstline=29, lastline=41]{./code/Manager.cpp}
+
+W wątek interackji przekazujemy wyrażenie lambda(anonimową funckję) w ktorej sprawdzamy co wcisnał użytkownik i odpowiednio zmieniamy nasz multiplier(sleep jest dany dlatego ze bardzo szybko sprawdza).
+
+\subsection{\emph{Main}}
+
+Chowamy konsole. Tworzymy okno na ktorym wszystko się rysuje i dopoki jest otwarte rysujemy nasza symulacje.
+
+\lstinputlisting{./code/Main.cpp}
+
+\section{Działanie programu}
+
+Po uruchomieniu programu każdy filozof otrzymuje losowy czas, który będzie mógł poświęcić na myślenie i jedzenie. jednocześnie użytkownik sam może regulować prędkość, z jaką filozofowie będą myśleć i jeść. Naciskając klawisze strzałek, możesz zwiększyć lub zmniejszyć prędkość.
+
+Jeśli filozof nie ma widelców i czas do jedzenia wynosi 0, zmienia swój stan na jedzenie. Jeśli filozof zakończył jedzenie (czas do jedzenia wynosi 0), zwalnia widelce i zmienia stan na myślenie. W każdym kroku aktualizuje stan filozofa oraz zmniejsza czas do jedzenia. Pętla jest opóźniana na określony czas, aby symulować aktywność filozofów.
+
+\printbibliography
+
+\end{document}
