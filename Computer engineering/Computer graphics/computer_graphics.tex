@@ -1,0 +1,212 @@
+\documentclass[a4paper, 12pt]{report}
+
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{caption}
+\usepackage{hyperref}
+
+
+% image folder path
+\graphicspath{{./pix/}}
+
+% change tabel of contents label
+\renewcommand\contentsname{Spis treści}
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+
+% listings configuration
+\lstset{language=C++,
+	basicstyle=\scriptsize,
+	breakatwhitespace=false,
+	breaklines=true,
+	commentstyle=\color{green},
+	frame=single,
+	keepspaces=false,
+	keywordstyle=\color{blue},
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
+	showtabs=false,
+	stringstyle=\color{red},
+	tabsize=2,
+}
+
+
+% document's beginning
+\begin{document}
+\begin{titlepage}
+\begin{center}
+		\vspace*{1cm}
+		\textbf{Grafika komputerowa\\Laboratorium\\}
+		\vspace{2cm}
+		\textbf{Stanislau Antanovich \& Mykola Sharonov}
+		\vfill
+		\vspace{0.8cm}
+		\includegraphics[scale=0.7]{logo.png}
+\end{center}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\chapter{Budowa obiektu sterowanego}
+\section{Opis zadania}
+Należy zbudować ``robot rolniczy (łazik)'' wykorzystując wyłącznie prymitywy bazujące na trójkącie. Obiekt ten będzie wykorzystywany na kolejnych zajęciach. W tworzonej grze komputerowej użytkownik będzie miał możliwość sterowania tym łazikiem.
+\section{Wymagania}
+Wymagania dotyczące budowy głósnego obiektu:
+\begin{itemize}
+\item Na ocenę 3: Obiekt złożony z co najmniej 10 brył elementarnych (walec, prostopadłościan, itp.) zbudowanych przy użyciu prymitywów bazujących na trójkącie.
+\item Na ocenę 4: Obiekt złożony z co najmniej 20 brył elementarnych (walec, prostopadłościan, itp.) zbudowanych przy użyciu prymitywów bazujących na trójkącie.
+\item Na ocenę 5: Obiekt złożony z co najmniej 25 brył elementarnych (walec, prostopadłościan, itp.) zbudowanych przy użyciu prymitywów bazujących na trójkącie oraz projekt napisany obiektowo w C++.
+
+Możliwość zaimportowania łazika z programu graficznego (np. Blender) o budowie odpowiadającej co najmniej 25 bryłom elementarnym.
+\end{itemize}
+
+\section{Realizaja zadania}
+
+Naszym ``łazikiem'' będzie występował zwykły samochód.
+
+\begin{figure}[h]
+		\centering
+		\includegraphics{lazik.jpg}
+		\caption{Łazik(samoshód)}
+\end{figure}
+
+
+\subsection{class \emph{Wheel}}
+\subsubsection{Opis działania}
+
+Klasa \emph{Wheel} odpowiada za rysowanie koła.
+
+\subsubsection{Plik \emph{Wheel.h}}
+
+Plik \emph{Wheel.h} deklaruje wszystkie zmienne oraz metody, które będą używane obiektami tej klasy.
+
+\lstinputlisting[firstline=2]{../WindowsProject1/Wheel.h}
+
+\subsubsection{Plik \emph{Wheel.cpp}}
+
+Plik \emph{Wheel.cpp} zawiera inicjalizacje zmiennych oraz metod opisanych w pliku nagłówkowym \emph{Wheel.h}.
+
+\lstinputlisting{../WindowsProject1/Wheel.cpp}
+
+\subsection{class \emph{SideSciana}}
+\subsubsection{Opis działania}
+
+Klasa \emph{SideSciana} odpowiada za rysowanie scian bokowych samochodu.
+
+\subsubsection{Plik \emph{SideSciana.h}}
+
+Plik nagłówkowy \emph{SideSciana.h} deklaruje wszystkie zmienne oraz metody, które będą używane obiektami tej klasy.
+
+\lstinputlisting[firstline=2]{../WindowsProject1/SideSciana.h}
+
+\subsubsection{Plik \emph{SideSciana.cpp}}
+
+Plik \emph{SideSciana.cpp} zawiera inicjalizacje zmiennych oraz metod opisanych w pliku nagłówkowym \emph{SideSciana.h}.
+
+\lstinputlisting{../WindowsProject1/SideSciana.cpp}
+
+\subsection{class \emph{Front}}
+\subsubsection{Opis działania}
+Klasa \emph{Front} odpowiada za rysowanie przdniej ściany samochodu.
+
+\subsubsection{Plik \emph{Front.h}}
+Plik nagłówkowy \emph{Front.h} deklaruje wszystkie zmienne oraz metody, które będą używane obiektami tej klasy.
+\lstinputlisting[firstline=2]{../WindowsProject1/Front.h}
+
+\subsubsection{Plik \emph{Front.cpp}}
+Plik \emph{Front.cpp} zawiera inicjalizacje zmiennych oraz metod opisanych w pliku nagłówkowym \emph{Front.h}.
+\lstinputlisting{../WindowsProject1/Front.cpp}
+
+\subsection{class \emph{Back}}
+\subsubsection{Opis działania}
+Klasa \emph{Back} odpowiada za rysowanie tylnej ściany samochodu.
+
+\subsubsection{Plik \emph{Back.h}}
+Plik nagłówkowy \emph{Back.h} deklaruje wszystkie zmienne oraz metody, które będą używane obiektami tej klasy.
+\lstinputlisting[firstline=2]{../WindowsProject1/Back.h}
+
+\subsubsection{Plik \emph{Back.cpp}}
+Plik \emph{Back.cpp} zawiera inicjalizacje zmiennych oraz metod opisanych w pliku nagłówkowym \emph{Back.h}.
+\lstinputlisting{../WindowsProject1/Back.cpp}
+
+\chapter{Budowa otoczenia}
+\section{Opis zadania}
+Należy zbudować elementy otoczenia, w którym będzie poruszał się robot rolniczy wykorzystując wyłącznie prymitywy bazujące na trójkącie. Elementy te będą wykorzystywane na kolejnych zajęciach i będą powiązanie z fabułą gry.
+\section{Wymagania}
+Wymagania dotyczące budowy otoczenia:
+\begin{itemize}
+\item Na ocenę 3: Przygotowanie otoczenia o podłożu płaskim oraz utworzenie dwóch obiektów dodatkowych (drzewo, bramka, budynek).
+\item Na ocenę 4: Przygotowanie otoczenia o podłożu nieregularnym (góra, stadion, wyboista ziemia) oraz utworzenie jednego obiektu dodatkowego.
+\item Na ocenę 5: Import otoczenia z programu graficznego (otoczenie o podłożu nieregularnym i minimum 1 obiekt dodatkowy).
+\end{itemize}
+
+\section{Realizaja zadania}
+
+\begin{figure}
+		\centering
+		\includegraphics[scale=0.4]{podloze.jpg}
+		\caption{Podłoże}
+\end{figure}
+
+\subsection{class Podloze}
+
+Klasa \emph{Podloze} odpowiada za rysowanie otoczenia. Plik \emph{Podloze.cpp} zawiera ponat 29 tys. linii kodu więc nie będzie umieszczony w sprawozdaniu.
+
+\subsubsection{Opis działania}
+
+Podłoże zostało eksportowane z programu \emph{Blender}.
+
+\subsubsection{Plik \emph{Podloze.h}}
+
+\lstinputlisting{../WindowsProject1/Podloze.h}
+
+\chapter{Teksturowanie}
+\section{Opis zadania}
+
+Należy dokonać teksturowania według przedstawionych poniżej kryteriów.
+\section{Wymagania}
+
+Wymagania dotyczące dodania teksurowania.
+\begin{itemize}
+\item Na ocenę 3: Teksturowanie obiektów otoczenia oraz utworzenie autorskiego rozwiązania sterowaniem kamerą.
+\item Na ocenę 4: Jak na ocenę 3 oraz teksturowanie powierzchni.
+\item Na ocenę 5: Jak na ocenę 4 oraz teksturowanie obiektu, który będzie sterowany (minimum 3 bryły).
+\end{itemize}
+\section{Realizacja zadania}
+
+\lstinputlisting[firstline=521, lastline=531]{../WindowsProject1/main.cpp}
+
+\chapter{Sterowanie obiektem głównym}
+\section{Opis zadania}
+Należy dokonać sterowanie obiektem głównym.
+\section{Wymagania}
+Wymagania dotyczące sterowania obiektem głównym.
+\begin{itemize}
+\item Na ocenę 3: Realizacja prostego sterowanie przód-tył i obrót wokół własnej osi.
+\item Na ocenę 4: Implementacja prostej fizyki sterowania (w przypadku łazika różnica prędkości na gąsienicach lub oś skrętna).
+\item Na ocenę 5: Jak na ocenę 4 oraz implementacja podstawowych zagadnień fizycznych np. pęd ciała.
+\end{itemize}
+\section{Realizacja zadania}
+
+W pliku głównym \emph{main.cpp} są 8 zmiennych odpowiadających za naciśnięcie klawisz.
+
+\lstinputlisting[firstline=27,lastline=34]{../WindowsProject1/MAIN.cpp}
+
+Niżej w tym samym pliku znajduje się \verb|switch\case|, który cały czas sprawdza czy klawisze są naciśnięte i w zależności od tego zmienne przyjmują inne wartości(\verb|true| albo \verb|false|).
+
+\lstinputlisting[firstline=897,lastline=970]{../WindowsProject1/MAIN.cpp}
+
+W funkcji \emph{RenderScene} znajduje się fragment kodu, który sprawdza stany zmiennych.
+
+\lstinputlisting[firstline=532, lastline=547]{../WindowsProject1/MAIN.cpp}
+
+W zależności od wartości zmiennej będą również zmienione zmienne: \verb|posX|, \verb|posY|, \verb|posZ|. Wartości odpowiadają za pozycję samochodui na płaszczyźnie. 
+
+\end{document}
