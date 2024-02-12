@@ -4,7 +4,7 @@
 
 - [Overview](#overview)
 - [Computer engineering](#computer-engineering)
-- [Documentation](#documentaion)
+- [Documentation](#documentation)
 - [Scientific](#scientific)
 
 
