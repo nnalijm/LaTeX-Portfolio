@@ -18,4 +18,8 @@ The "Computer Engineering" section houses LaTeX documents pertaining to various 
 
 ## [Documentation](https://github.com/nnalijm/LaTeX-Portfolio/tree/main/Documentation)
 
+The "Documentation" section houses LaTeX files dedicated to various types of documentation. These documents are designed to assist with communication, instruction, and information dissemination across different domains.
+
 ## [Scientific](https://github.com/nnalijm/LaTeX-Portfolio/tree/main/Scientific)
+
+
