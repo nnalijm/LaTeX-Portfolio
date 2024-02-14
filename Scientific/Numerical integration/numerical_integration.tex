@@ -1,0 +1,144 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage{mathtools}
+\usepackage[polish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[left=15mm, right=15mm, top=10mm, bottom=20mm]{geometry}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{enumitem} \title{\textbf{Całkowanie numeryczne}}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+Metody obliczania całek(całki występują w trakcie obliczania pracy energii, momentów zgienających)
+
+
+\begin{enumerate}
+\item Metodę Newtona-Cotesa
+\item Metodę Gaussa
+\item Iteracyjny algorytm Romberga
+\item Metodę Monte Carlo
+\end{enumerate}
+
+Całkę doprowadzamy do postaci standartowej
+
+Wzory:
+
+%\begin{align*}
+\begin{gather*}
+%\begin{split}
+%\[
+\gamma = \int_a^bf(x)dx = \int_{-1}^1F(\xi)d\xi\\
+%\]
+%\[
+F(\xi) = \frac{b-a}{2}f\left(\frac{a+b}{2}+\frac{b-a}{2}\xi \right)
+%\]
+%\end{split}
+\end{gather*}
+%\end{align*}
+
+(Zaletą zastosowania standaryzacji jest uniezależnienie sposobu obliczania całki od długości przedziału zmienności zmiennej niezależnej)
+
+Następnie przedział <-1,1> dzielimy na n równych podprzedziałów i wyznaczamy w punktach podziału wartość funkcji F($\xi$). Następnie funkcję podcałkową zastępujemy wielomianem stopnia n-1. Wielomian ten całkujemy algebraicznie lub stosujemy równanie
+\[
+\gamma = \int_{-1}^1F(\xi)d\xi=\sum_{i=1}^nH_iF(\xi_i)
+\]
+gdzie współczynniki $H_i$ należy dobrać w zależności od stopnia wielomiana.
+
+Najprostszy(ale i najmniej dokładny) wariant całkowania otrzymuje się, przyjmując n=2(tzw. metoda trapezów). Wtedy
+\[
+\gamma = F(-1) + F(1)
+\]
+gdy przyjęć n=3, otrzymujemy metodę Simpsona z regułą jednej trzeciej
+\[
+\gamma = \frac{1}{3}\left[F(-1)+4F(0)+F(1)\right]
+\]
+dla n=4 mamy metodę Simpsona z regułą trzech ósmych
+\[
+\gamma = \frac{1}{8}\left[F(-1)+3F(-\frac{1}{3})+3F(\frac{1}{3})+F(1)\right]
+\]
+
+\subsection*{Metoda trapezów - ogólny wzór trapezów}
+\begin{gather*}
+E\leq\frac{(b-a)^3}{12n^2}\cdot M \text{gdzie M} = max_{x\in<a,b>}|f''(x)|\\
+\int_a^bf(x)dx\approx\sum_{i=1}^n\frac{y_{i-1}+y_i}{2}h=\frac{1}{2}h(y_0+y_1)+\\
++\frac{1}{2}h(y_1+y_2)+\dots+\frac{1}{2}h(y_{n-1}+y_1)=\\
+=\frac{1}{2}h(y_0+2y_1+2y_2+\dots+2y_{n-1}+y_1)=\\
+=\frac{1}{2}h(y_0+y_n+2\sum_{i=1}^{n-1}y_i)
+\end{gather*}
+
+\textbf{Zadanie 1}
+
+Obliczyć wartość całki $\int_0^1\sqrt{1+x}$ stosując wzór ogólny trapezów z krokiem n=$\frac{1}{3}$.
+
+
+Wynik analityczny to 1,21895
+
+$h=\frac{b-a}{n}\rightarrow n=\frac{b-a}{n}=\frac{1-0}{\frac{1}{3}}=3$ - liczba podprzedziałów,
+a liczba węzłów jest równa (n+1) czyli 4
+
+Węzły mają wartości:
+\begin{align*}
+x_0&=0 - \text{lewy brzeg}\\
+x_1&=x_0+h=\frac{1}{3}\\
+x_2&=x_1+h=\frac{2}{3}\\
+x_3&=x_2+h=1 - \text{lewy brzeg}
+\end{align*}
+
+Wzór na kwadraturę to
+
+\begin{gather*}
+y_0=\sqrt{1+x_0}=\sqrt{1+0}=1\\
+\end{gather*}
+\begin{align*}
+\gamma_3=\sum_{i=1}^3\frac{y_{i-1}+y_i}{2}h&=\frac{1}{2}h\left(y_0+y_n+2\sum_{i=1}^{n-1}y_i\right)=\\
+&=\frac{1}{2}h\left(y_0+y_3+2\sum_{i=1}^2y_i\right)\\
+&=\frac{1}{2}h\left(1+\sqrt{1+1}+2\left(\sqrt{1+\frac{1}{3}}+\sqrt{1+\frac{2}{3}}\right)\right)\\
+&=\frac{1}{2}\cdot\frac{1}{3}\left[1+\sqrt{2}+2\left(\sqrt{\frac{4}{3}}+\sqrt{\frac{5}{3}}\right)\right]=\\
+&=1,2176
+\end{align*}
+
+Wartość błędu 
+\[
+E=\left|\frac{\gamma_3-\gamma}{\gamma}\right|\cdot100\%=\left|\frac{1,2176-1,21895}{1,21895}\right|\cdot100\%=11,08\%
+\]
+
+
+\textbf{Zadanie 2}
+
+\subsection*{Ogólny wzór Simpsona}
+
+\[
+\int_a^bf(x)dx\approx\frac{1}{3}h\sum_{i=1}^{n-2}\left(y_{2i-2}+4y_{2i-1}+y_{2i}\right)=\frac{h}{3}\left[y_0+4(y_1+y_3+\dots+y_{n-1})+2(y_2+y_4+\dots+y_{n-2})+y_n\right]\\
+\]
+\[
+\int_0^1\sqrt{1+x}dx
+\]
+
+Wartość kroku musi uleć zmianie bo przy h = $\frac{1}{3}$ ,,n`` nie jest liczbą parzystą.
+
+Weźmy h=$\frac{1}{4}$, wtedy n=4. Węzły wyroszą $0, \frac{1}{4}, \frac{2}{4},\frac{3}{4}, 1$.
+
+Wzór Simpsona
+
+\begin{align*}
+S_4&=\frac{1}{3}h\left(y_0+4y_1+y_2+y_2+4y_3+y_4\right)=\\
+&=\frac{1}{3}h\left[y_0+4(y_1+y_3)+2y_2+y_4\right]=\\
+&=\frac{1}{3}\cdot\frac{1}{4}\left[f(0)+4\left[f(\frac{1}{4})+f(\frac{3}{4})\right]+2f(\frac{1}{2})+f(1)\right]=\\
+&=\frac{1}{12}\left[\sqrt{1}+4\left(\sqrt{\frac{5}{4}}+\sqrt{\frac{7}{4}}\right)+2\sqrt{\frac{3}{2}}+\sqrt{2}\right]=1,21895
+\end{align*}
+
+\textbf{Zadanie 3}
+
+Oblicz wartość całki $\int_1^7e^xdx$ stosując wzór trapezów.
+
+Użyj 6-ciu przedziałów h=$\frac{b-a}{n}=\frac{7-1}{6}=1$
+
+$e^7-e^1=1093,914877$
+
+
+\end{document}
