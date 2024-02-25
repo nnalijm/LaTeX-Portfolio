@@ -28,4 +28,4 @@ The *Documentation* section houses LaTeX files dedicated to various types of doc
 
 The *Scientific* section hosts LaTeX documents comprising scientific articles covering diverse topics and research areas. These articles represent contributions to the academic community and showcase research findings, analyses, and insights on various scientific subjects.
 
-## [Workflow]
+## Workflow
