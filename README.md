@@ -7,6 +7,7 @@
   - [Computer engineering](#computer-engineering)
   - [Documentation](#documentation)
   - [Scientific](#scientific)
+- [Workflow](#workflow)
 
 
 ## Overview
@@ -26,3 +27,5 @@ The *Documentation* section houses LaTeX files dedicated to various types of doc
 ### [Scientific](https://github.com/nnalijm/LaTeX-Portfolio/tree/main/Scientific)
 
 The *Scientific* section hosts LaTeX documents comprising scientific articles covering diverse topics and research areas. These articles represent contributions to the academic community and showcase research findings, analyses, and insights on various scientific subjects.
+
+## [Workflow]
