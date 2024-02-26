@@ -1,20 +1,19 @@
-\documentclass[a4paper, 10pt]{report}
+\documentclass[a4paper, 10pt]{article}
 
 % PACKAGES
 \usepackage[T1]{fontenc}
 \usepackage[polish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
-\usepackage{listings}
-\usepackage{xcolor}
-\usepackage{hyperref}
+\usepackage{listings} \usepackage{xcolor}
+%\usepackage{hyperref}
 
 % PREAMBLE
-
 % folder which contains images
 \graphicspath{{./pix/}}
 
 \renewcommand\contentsname{Spis treści}
+\renewcommand\listfigurename{Spis rysunków}
 
 \begin{document}
 
@@ -36,8 +35,20 @@
 \end{titlepage}
 
 \tableofcontents
+\listoffigures
 
+\newpage
+\section{Wstęp}
+\subsection{Cel ćwiczenia}
 
+\section{Wykonanie przykładowego systemu ekspertowego typu Mamdaniego}
+\subsection{Problem}
+\subsection{Realizacja}
 
+\section{Modyfikacja systemu}
+
+\section{Przykładowe zadania zaliczeniowe}
+
+\section{Wnioski}
 
 \end{document}
