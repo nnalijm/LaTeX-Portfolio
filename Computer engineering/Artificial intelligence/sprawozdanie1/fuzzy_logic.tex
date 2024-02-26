@@ -5,8 +5,12 @@
 \usepackage[polish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
-\usepackage{listings} \usepackage{xcolor}
-%\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{float}
+%\usepackage[left=25mm, right=25mm, top=45mm, bottom=45mm]{geometry}
+\usepackage{hyperref}
 
 % PREAMBLE
 % folder which contains images
@@ -14,6 +18,32 @@
 
 \renewcommand\contentsname{Spis treści}
 \renewcommand\listfigurename{Spis rysunków}
+\lstset{language=Python,                     
+	basicstyle=\scriptsize, 
+	breakatwhitespace=false,
+	breaklines=true,
+	commentstyle=\color{green}\ttfamily,
+	frame=single,
+	keepspaces=false,
+	keywordstyle=\color{blue}\ttfamily,
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,	
+	stringstyle=\color{red}\ttfamily,
+	tabsize=2,
+	morecomment=[l][\color{magenta}]{\#}
+}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,
+	urlcolor=cyan,
+	pdftitle={Synteza układu wnioskującego},
+	pdfpagemode=FullScreen,
+}
 
 \begin{document}
 
@@ -30,7 +60,7 @@
 	\vspace{1.5cm}
 	\textbf{Stanislau Antanovich}\\
 	nr. indeksu: 173590\\
-	nr. lab: L04
+	gr. lab: L04
 \end{center}
 \end{titlepage}
 
@@ -41,13 +71,78 @@
 \section{Wstęp}
 \subsection{Cel ćwiczenia}
 
-\section{Wykonanie przykładowego systemu ekspertowego typu Mamdaniego}
+Laboratorium składa się z trzech zasadniczych części. Część \ref{c1} ma na celu zapoznanie się ze sposobem syntezy rozmytego systemu ekspertowego typu Mamdaniego z wykorzystaniem biblioteki \textbf{scikit-fuzzy}. W części \ref{c2}, należy zapoznać się z ideą działania systemu Mamdaniego a następnie dokonać modyfikacji systemu wykonanego w części \ref{c1}. Część \ref{c3} laboratorium polega na wykonaniu przykładowego zadania zaliczeniowego.
+
+\section{System ekspertowy typu Mamdaniego}\label{c1}
 \subsection{Problem}
+
+Zaprojektować rozmyty układ ekspertowy doradzający ile napiwku pozostawić w restauracji na podstawie oceny jakości obsługi oraz jakości jedzenia. Jakość obsługi i jakość jedzenia będzie oceniana w skali od 1 do 10, gdzie 10 reprezentuję ocenę maksymalną, natomiast napiwek będzie liczbą z przedziału [0,30] reprezentującą procent wartości rachunku.
+
+Baza reguł będzie składała się z 5 reguł. System zostanie wykonany w dwóch etapach. W \textbf{etapie pierwszym}(rys. \ref{fig:obsluga} i \ref{fig:napiwek}) system będzie zbudowany z jednego wejścia(\emph{obsługa}) i jednego wyjścia(\emph{napiwek}) oraz 3 reguł postaci:
+\begin{itemize}
+	\item[R1] \emph{jeżeli obsługa jest słaba, to napiwek jest mały}
+	\item[R2] \emph{jeżeli obsługa jest dobra, to napiwek jest średni}
+	\item[R3] \emph{jeżeli obsługa jest wspaniała, to napiwek jest duży}
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.25]{Figure_1.png}
+	\caption{\textit{Obsługa}}
+	\label{fig:obsluga}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.25]{Figure_2.png}
+	\caption{\textit{Napiwek}}
+	\label{fig:napiwek}
+\end{figure}
+
+W \textbf{etapie drugim} do systemu zostanie dodane gruga zmienna wejściowa \emph{jedzenie}(rys. \ref{fig:jedzenie}) oraz 2 dodatkowe reguły
+\begin{itemize}
+	\item[R4] \emph{jeżeli jedzenie jest zepsute, to napiwek jest mały}
+	\item[R5] \emph{jeżeli jedzenie jest wyborne, to napiwek jest duży}
+\end{itemize}
+
+
 \subsection{Realizacja}
+\subsubsection{Inicjowanie modułów}
 
-\section{Modyfikacja systemu}
+W tej sekcji inicjujemy wszystkie wymagane biblioteki dla prawidłowego działania programu.
 
-\section{Przykładowe zadania zaliczeniowe}
+\lstinputlisting[firstline=0, lastline=4]{./code/main.py}
+
+\subsubsection{Tworzenie zmiennych stanu poprzednika ``obsługa'' oraz następnika ``napiwek''}
+
+W tej sekcji tworzymy zmienne stanu poprzednika ``obsługa'' oraz następnika ``napiwek''.
+
+\lstinputlisting[firstline=6, lastline=7]{./code/main.py}
+
+\subsubsection{Dodanie zbiorów rozmytych}
+ 
+W tej sekcji do zminnej \emph{obsługa} dodajemy następujące zbiory: \emph{slaba, dobra, wspaniala}. 
+
+Zbiór \emph{slaba} o centrum umieszczonym w punkcie uniwersum równym \textbf{0} i rozpiętości wynoszącej \textbf{1.5}. Dla zbiorów \emph{dobra} i \emph{wspaniala} o centrach ulokowanych w punktach odpowiednio \textbf{5} oraz \textbf{10} i rozpiętości wynoszącej \textbf{1.5}
+
+Dla zmiennej \emph{napiwek} dodajemy zbiory trójkątne: \emph{maly, sredni, duzy} o parametrach [0, 5, 10], [10, 15, 20] i [20, 25, 30] odpowiednio.
+
+\lstinputlisting[firstline=9, lastline=15]{./code/main.py}
+
+\subsubsection{Podgląd zbiorów rozmytych}
+\subsubsection{Definicja reguł}
+\subsubsection{Dodanie reguł do systemu rozmytego}
+\subsubsection{Sprawdzenie działania systemu}
+\subsubsection{Sprawdzenie działania systemu dla wartości obsługi}
+\subsubsection{Dodanie drugiej wejściowej}
+\subsubsection{Dodanie reguł 4 i 5}
+\subsubsection{Sprawdzenie działania systemu dla wartości ``obsługi''}
+\subsubsection{Sprawdzenie działania systemu dla wartości ``obsługi'' i ``jedzenia''}
+
+
+\section{Modyfikacja systemu}\label{c2}
+
+\section{Przykładowe zadania zaliczeniowe}\label{c3}
 
 \section{Wnioski}
 
