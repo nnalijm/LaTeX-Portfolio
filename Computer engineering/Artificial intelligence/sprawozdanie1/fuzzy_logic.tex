@@ -31,9 +31,9 @@
 	showspaces=false,
 	showstringspaces=false,
 	showtabs=false,	
-	stringstyle=\color{red}\ttfamily,
+	stringstyle=\color{magenta}\ttfamily,
 	tabsize=2,
-	morecomment=[l][\color{magenta}]{\#}
+	morecomment=[l][\color{red}]{\#}
 }
 
 \hypersetup{
@@ -107,19 +107,19 @@ W \textbf{etapie drugim} do systemu zostanie dodane gruga zmienna wejściowa \em
 
 
 \subsection{Realizacja}
-\subsubsection{Inicjowanie modułów}
+\subsubsection{Inicjowanie modułów}\label{p1}
 
 W tej sekcji inicjujemy wszystkie wymagane biblioteki dla prawidłowego działania programu.
 
 \lstinputlisting[firstline=0, lastline=4]{./code/main.py}
 
-\subsubsection{Tworzenie zmiennych stanu poprzednika ``obsługa'' oraz następnika ``napiwek''}
+\subsubsection{Tworzenie zmiennych stanu poprzednika ``obsługa'' oraz następnika ``napiwek''}\label{p2}
 
 W tej sekcji tworzymy zmienne stanu poprzednika ``obsługa'' oraz następnika ``napiwek''.
 
 \lstinputlisting[firstline=6, lastline=7]{./code/main.py}
 
-\subsubsection{Dodanie zbiorów rozmytych}
+\subsubsection{Dodanie zbiorów rozmytych}\label{p3}
  
 W tej sekcji do zminnej \emph{obsługa} dodajemy następujące zbiory: \emph{slaba, dobra, wspaniala}. 
 
@@ -129,15 +129,73 @@ Dla zmiennej \emph{napiwek} dodajemy zbiory trójkątne: \emph{maly, sredni, duz
 
 \lstinputlisting[firstline=9, lastline=15]{./code/main.py}
 
-\subsubsection{Podgląd zbiorów rozmytych}
-\subsubsection{Definicja reguł}
-\subsubsection{Dodanie reguł do systemu rozmytego}
-\subsubsection{Sprawdzenie działania systemu}
-\subsubsection{Sprawdzenie działania systemu dla wartości obsługi}
-\subsubsection{Dodanie drugiej wejściowej}
-\subsubsection{Dodanie reguł 4 i 5}
-\subsubsection{Sprawdzenie działania systemu dla wartości ``obsługi''}
-\subsubsection{Sprawdzenie działania systemu dla wartości ``obsługi'' i ``jedzenia''}
+\subsubsection{Podgląd zbiorów rozmytych}\label{p4}
+
+Podgląd zbiorów rozmytch można zrealizować metodą \verb|view()| dla poszczególnych zmiennych stanu.
+
+\lstinputlisting[firstline=17, lastline=18]{./code/main.py}
+
+\subsubsection{Definicja reguł}\label{p5}
+
+W tej sekcji definiujemy reguły.
+
+\lstinputlisting[firstline=20, lastline=22]{./code/main.py}
+
+\subsubsection{Dodanie reguł do systemu rozmytego}\label{p6}
+
+W tej sekcji dodajemy powyżej zdefiniowane reguły do systemu rozmytego.
+
+\lstinputlisting[firstline=24, lastline=25]{./code/main.py}
+
+\subsubsection{Sprawdzenie działania systemu}\label{p7}
+
+W tej sekcji sprawdzamy działanie systemu dla wartości obsługi równej \textbf{0}(rys. \ref{fig:obsluga0}) oraz dla wartości równej \textbf{10}(rys. \ref{fig:obsluga10}).
+
+\lstinputlisting[firstline=27,lastline=31]{./code/main.py}
+
+Wartość napiwku dla wartości obsługi wynosi: 5.07657801
+
+Wartość napiwku dla wartości obsługi wynosi: 24.9234219
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.25]{Figure_3.png}
+	\caption{\textit{Wyostrzenie metodą środka ciężkości dla wejścia obsługa = 0}}
+	\label{fig:obsluga0}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.25]{Figure_4.png}
+	\caption{\textit{Wyostrzenie metodą środka ciężkości dla wejścia obsługa = 10}}
+	\label{fig:obsluga10}
+
+\end{figure}
+
+\subsubsection{Sprawdzenie działania systemu dla wartości obsługi}\label{p8}
+
+W tej sekcji sprawdzamy działanie systemu dla wartości obsługi od 0 do 10(rys. \ref{fig:napiwek_obsluga} wykres funkcji napiwek=f(obsluga)).
+
+\lstinputlisting[firstline=33, lastline=45]{./code/main.py}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.25]{Figure_5.png}
+	\caption{\textit{Powierzchnia prejścia systemu ``napiwek'' o jednym wejściu}}
+	\label{fig:napiwek_obsluga}
+\end{figure}
+
+\subsubsection{Dodanie drugiej wejściowej}\label{p9}
+ 
+W tej selcji dodajemy drugą wejściową zmienną stanu ``jedzenie'' o trapezoidalnych(\verb|trapmf|) zbiorach rozmytych ``zepsute'' oraz ``wyborne''.
+
+\lstinputlisting[firstline=17, lastline=19]{./code/main.py}
+
+\subsubsection{Dodanie reguł 4 i 5}\label{p10}
+
+W tej sekcji dodajemy reguły 4 i 5 analogicznie do punktu.
+\subsubsection{Sprawdzenie działania systemu dla wartości ``obsługi''}\label{p11}
+\subsubsection{Sprawdzenie działania systemu dla wartości ``obsługi'' i ``jedzenia''}\label{p12}
 
 
 \section{Modyfikacja systemu}\label{c2}
