@@ -11,10 +11,11 @@
 \usepackage{float}
 %\usepackage[left=25mm, right=25mm, top=45mm, bottom=45mm]{geometry}
 \usepackage{hyperref}
+\usepackage{import}
 
 % PREAMBLE
 % folder which contains images
-\graphicspath{{./pix/}}
+\graphicspath{{./figures/}}
 
 \renewcommand\contentsname{Spis treści}
 \renewcommand\listfigurename{Spis rysunków}
@@ -68,10 +69,9 @@
 \listoffigures
 
 \newpage
-\section{Wstęp}
-\subsection{Cel ćwiczenia}
 
-Laboratorium składa się z trzech zasadniczych części. Część \ref{c1} ma na celu zapoznanie się ze sposobem syntezy rozmytego systemu ekspertowego typu Mamdaniego z wykorzystaniem biblioteki \textbf{scikit-fuzzy}. W części \ref{c2}, należy zapoznać się z ideą działania systemu Mamdaniego a następnie dokonać modyfikacji systemu wykonanego w części \ref{c1}. Część \ref{c3} laboratorium polega na wykonaniu przykładowego zadania zaliczeniowego.
+\input{./sections/introduction.tex}
+\import{./sections/}{introduction.tex}
 
 \section{System ekspertowy typu Mamdaniego}\label{sec:c1}
 \subsection{Problem}
