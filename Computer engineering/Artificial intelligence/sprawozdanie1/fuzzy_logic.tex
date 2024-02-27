@@ -73,7 +73,7 @@
 
 Laboratorium składa się z trzech zasadniczych części. Część \ref{c1} ma na celu zapoznanie się ze sposobem syntezy rozmytego systemu ekspertowego typu Mamdaniego z wykorzystaniem biblioteki \textbf{scikit-fuzzy}. W części \ref{c2}, należy zapoznać się z ideą działania systemu Mamdaniego a następnie dokonać modyfikacji systemu wykonanego w części \ref{c1}. Część \ref{c3} laboratorium polega na wykonaniu przykładowego zadania zaliczeniowego.
 
-\section{System ekspertowy typu Mamdaniego}\label{c1}
+\section{System ekspertowy typu Mamdaniego}\label{sec:c1}
 \subsection{Problem}
 
 Zaprojektować rozmyty układ ekspertowy doradzający ile napiwku pozostawić w restauracji na podstawie oceny jakości obsługi oraz jakości jedzenia. Jakość obsługi i jakość jedzenia będzie oceniana w skali od 1 do 10, gdzie 10 reprezentuję ocenę maksymalną, natomiast napiwek będzie liczbą z przedziału [0,30] reprezentującą procent wartości rachunku.
@@ -193,15 +193,27 @@ W tej selcji dodajemy drugą wejściową zmienną stanu ``jedzenie'' o trapezoid
 
 \subsubsection{Dodanie reguł 4 i 5}\label{p10}
 
-W tej sekcji dodajemy reguły 4 i 5 analogicznie do punktu.
+W tej sekcji dodajemy reguły 4 i 5 analogicznie do punktu \ref{p5}.
 \subsubsection{Sprawdzenie działania systemu dla wartości ``obsługi''}\label{p11}
+
+W tej sekcji sprawdzamy działanie systemu dla wartości obsługi równej \textbf{0} oraz wartości jedzenia równej \textbf{0}.
+
 \subsubsection{Sprawdzenie działania systemu dla wartości ``obsługi'' i ``jedzenia''}\label{p12}
 
+W tej sekcji sprawdzamy działanie systemu dla wartości obsługi i jedzenia od 0 do 10(rys. \ref{fig:napiwek_obsluga_jedzenie})
 
-\section{Modyfikacja systemu}\label{c2}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.25]{Figure_6.png}
+	\caption{\textit{Powierzchnia przejścia systemu ``napiwek'' o dwóch wejściach}}
+	\label{fig:napiwek_obsluga_jedzenie}
+\end{figure}
 
-\section{Przykładowe zadania zaliczeniowe}\label{c3}
 
+\section{Modyfikacja systemu}\label{sec:c2}
+
+\section{Przykładowe zadania zaliczeniowe}\label{sec:c3}
+ 
 \section{Wnioski}
 
 \end{document}
