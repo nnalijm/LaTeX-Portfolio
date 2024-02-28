@@ -31,8 +31,9 @@ regula5 = ctrl.Rule(jedzenie['wyborne'], napiwek['duzy'])
 napiwek_ctr = ctrl.ControlSystem([regula1, regula2, regula3, regula4, regula5])
 napiwek_sym = ctrl.ControlSystemSimulation(napiwek_ctr)
 
-napiwek_sym.input['obsluga'] = 0
 napiwek_sym.input['jedzenie'] = 0
+napiwek_sym.input['obsluga'] = 0
+# napiwek_sym.input['obsluga'] = 0 # dla wartosci rownej 10
 napiwek_sym.compute()
 print('Wynik', napiwek_sym.output['napiwek'])
 napiwek.view(sim=napiwek_sym)
@@ -67,9 +68,8 @@ fig = plt.figure(figsize=(8, 8))
 ax = fig.add_subplot(111, projection='3d')
 surf = ax.plot_surface(x, y, z, cmap='viridis')
 
-ax.set_xlabel('obsługa')
+ax.set_xlabel('obsluga')
 ax.set_ylabel('jedzenie')
 ax.set_zlabel('napiwek')
-
 ax.view_init(30, 200)
 plt.show()
