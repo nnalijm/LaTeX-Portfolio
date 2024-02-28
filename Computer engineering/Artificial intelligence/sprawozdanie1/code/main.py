@@ -33,7 +33,7 @@ napiwek_sym = ctrl.ControlSystemSimulation(napiwek_ctr)
 
 napiwek_sym.input['jedzenie'] = 0
 napiwek_sym.input['obsluga'] = 0
-# napiwek_sym.input['obsluga'] = 0 # dla wartosci rownej 10
+#napiwek_sym.input['obsluga'] = 10 # dla wartosci rownej 10
 napiwek_sym.compute()
 print('Wynik', napiwek_sym.output['napiwek'])
 napiwek.view(sim=napiwek_sym)
