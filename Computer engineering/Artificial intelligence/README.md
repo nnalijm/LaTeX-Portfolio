@@ -16,6 +16,8 @@
 
 ## [Fuzzy logic](https://github.com/nnalijm/LaTeX-Portfolio/tree/main/Computer%20engineering/Artificial%20intelligence/sprawozdanie1)
 
+The laboratory consists of three main parts. Part I aims to familiarize you with the synthesis method fuzzy Mamdani-type expert system using the scikit-fuzzy library. In part II, you should get acquainted with the idea of Mamdani's system and then modify the system performed in part I. Part III of the laboratory involves completing an example final task
+
 ## Khepera mobile robot
 
 ### Obstacle avoidance task
