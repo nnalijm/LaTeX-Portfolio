@@ -22,6 +22,10 @@ The laboratory consists of three main parts. Part I aims to familiarize you with
 
 ### Obstacle avoidance task
 
+The aim of the exercise is to learn how to synthesize a role-playing expert system regulator. The fuzzy expert system will be used to control the small [mobile robot Khepera](https://en.wikipedia.org/wiki/Khepera_mobile_robot) performing the task of avoiding obstacles.
+
+The laboratory consists of three main parts. Part I aims to familiarize you with the structure and how to control the Khepera III mobile robot using dedicated Python functions. IN part II, a Mamdani-type [expert system](https://en.wikipedia.org/wiki/Expert_system) will be designed using the library scikit-learn performing the task of avoiding obstacles. Part III of the lab is hands-on verifying the correctness of the implemented system in controlling a real robot.
+
 ### Following an object task
 
 ## Neuron model
