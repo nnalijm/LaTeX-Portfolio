@@ -1,15 +1,45 @@
-\documentclass{article}
+\documentclass[a4paper, 10pt]{article}
 
 \usepackage{graphicx}
 \usepackage[T1]{fontenc}
 \usepackage[polish]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{color}
 
 
 \graphicspath{{./figures}}
 
 \renewcommand\contentsname{Spis treści}
 \renewcommand\listfigurename{Spis rysunków}
+\renewcommand\lstlistingname{Polecenie}
+\renewcommand\lstlistlistingname{Spis poleceń}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{HTML}{C42043}
+\definecolor{backcolour}{HTML}{F2F2F2}
+\definecolor{bookColor}{cmyk}{0,0,0,0.90}
+\color{bookColor}
+
+\lstdefinestyle{SQL}{
+    language=SQL,
+    backgroundcolor=\color{backcolour},
+    basicstyle=\footnotesize\ttfamily,
+    breaklines=true,
+    captionpos=b,
+    commentstyle=\color{green},
+    keywordstyle=\color{red},
+    stringstyle=\color{red},
+    showstringspaces=false,
+    tabsize=2,
+    morekeywords={USE, CREATE, TABLE, VARCHAR, INT, NOT, NULL, PRIMARY, KEY, AUTO_INCREMENT, INSERT, INTO, VALUES, SELECT, FROM, WHERE, ORDER, BY, ASC, DESC, GROUP, HAVING, UPDATE, SET, DELETE, JOIN, LEFT, RIGHT, OUTER, INNER, ON},
+    frame=single,
+    framesep=5pt,
+    frameround=tttt,
+    rulecolor=\color{gray}
+}
 
 \begin{document}
 \begin{titlepage}
@@ -31,5 +61,45 @@
 	\today
 \end{center}
 \end{titlepage}
+
+\tableofcontents
+\listoffigures
+\lstlistoflistings
+
+\newpage
+
+\section{Wprowadzenie}
+\subsection{Cel ćwiczenia}
+
+Celem tego laboratorium jest zapoznanie się z narzędziem Oracle SQL Developer oraz praktyczne zastosowanie wiedzy na temat tworzenia, zarządzania i manipulowania bazami danych w Oracle. 
+
+Poprzez realizację konkretnych zadań na przykładzie bazy danych ``Firma handlowa'', jest możliwość zdobycia umiejętności w obszarze tworzenia zapytań SQL, importowania i eksportowania danych, jak również zarządzania nimi przy użyciu interfejsu SQL Developer.
+
+\subsection{Przygotowanie}
+
+\begin{enumerate}
+\item Zapoznanie się z narzędziem Oracle SQL Developer.
+\item Przeanalizowanie struktury(tabele, pola, typy pól) pobranej bazy danych.
+\item Zaimportowanie bazy danych ``Firma handlowa'' do narzędzia SQL Developer.
+\end{enumerate}
+
+\section{Realizacja}
+
+Po zaimportowaniu bazy danych ``Firma handlowa'' do narzędzia SQL developer można zaczynać wykonywać polecenia SQL.
+
+\begin{enumerate}
+\item Wyświetlienie wszystkiej informacji o pracownikach 
+\item Wyświetlienie informacji o imieniu, nazwisku i pensji pracowników
+\item Wypisywanie wszystkich Pracowników, sortując na podstawie Nazwiska w kolejności przeciwnej do alfabetycznej
+\item Wyświetlienie informacji o imieniu, nazwisku i pensji pracowników, których pensja jest > 1500
+\item Wyświetlienie zamówień o wartości z przedziału <1000,3000>, złożonych po dniu 10-05-1991
+\item Sortowanie wyniku zadania 5 po datach złożenia zamówień i po wartościach zamówień
+\item Dodawanie pracownika o danych z przykładowymi wartościami
+\item Modyfikacja płacę dodanego pracownika do wartości 2000. 
+\item Usunięcie dodanego pracownika w podpunkcie. 
+\item Wyświetlienie imia i nazwiska i nazwę etatu pracowników zatrudnionych na etacie  ANALYST. Wybieranie danych z dwóch tabel, należy zastosować złączenie (odpowiedni warunek w WHERE lub klauzulę JOIN). 
+\item Wyświetlienie wszystkich pracowników na etacie MANAGER, wynik posortowany po identyfikatorze.
+\end{enumerate}
+
 
 \end{document}
