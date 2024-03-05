@@ -5,6 +5,8 @@
 \usepackage[polish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{listings}
+\usepackage{hyperref}
+\usepackage{caption}
 \usepackage{xcolor}
 \usepackage{color}
 
@@ -23,6 +25,13 @@
 \definecolor{bookColor}{cmyk}{0,0,0,0.90}
 \color{bookColor}
 
+\captionsetup[lstlisting]{
+    labelsep=period,
+    justification=raggedright,
+    singlelinecheck=false,
+    width=0.9\linewidth
+}
+
 \lstdefinestyle{SQL}{
     language=SQL,
     backgroundcolor=\color{backcolour},
@@ -37,7 +46,6 @@
     morekeywords={USE, CREATE, TABLE, VARCHAR, INT, NOT, NULL, PRIMARY, KEY, AUTO_INCREMENT, INSERT, INTO, VALUES, SELECT, FROM, WHERE, ORDER, BY, ASC, DESC, GROUP, HAVING, UPDATE, SET, DELETE, JOIN, LEFT, RIGHT, OUTER, INNER, ON},
     frame=single,
     framesep=5pt,
-    frameround=tttt,
     rulecolor=\color{gray}
 }
 
@@ -88,18 +96,44 @@ Poprzez realizację konkretnych zadań na przykładzie bazy danych ``Firma handl
 Po zaimportowaniu bazy danych ``Firma handlowa'' do narzędzia SQL developer można zaczynać wykonywać polecenia SQL.
 
 \begin{enumerate}
-\item Wyświetlienie wszystkiej informacji o pracownikach 
+
+\item  Wyświetlienie wszystkiej informacji o pracownikach 
+\begin{lstlisting}[style=SQL, caption=\textit{Wyświetlenie informacji o pracownikach}]
+SELECT * FROM PRACOWNICY;
+\end{lstlisting}
+
 \item Wyświetlienie informacji o imieniu, nazwisku i pensji pracowników
+\begin{lstlisting}[style=SQL, caption=\textit{Wyświetlenie imion, nazwisk i pensji pracowników}]
+SELECT IMIE,NAZWISKO,PENSJA FROM PRACOWNICY;
+\end{lstlisting}
+
 \item Wypisywanie wszystkich Pracowników, sortując na podstawie Nazwiska w kolejności przeciwnej do alfabetycznej
+\begin{lstlisting}[style=SQL, caption=\textit{Wypisywanie pracowników na podstawie nazwisk w kolejności przeciwnej do algabetycznej}]
+SELECT * FROM PRACOWNICY ORDER BY NAZWISKO DESC;
+\end{lstlisting}
+
 \item Wyświetlienie informacji o imieniu, nazwisku i pensji pracowników, których pensja jest > 1500
+\begin{lstlisting}[style=SQL, caption=\textit{Wyświetlenie informacji o imieniu, nazwisku i pensji pracowników których pensja jest > 1500}]
+SELECT IMIE,NAZWISKO,PENSJA FROM PRACOWNICY WHERE PENSJA > 1500;
+\end{lstlisting}
+
 \item Wyświetlienie zamówień o wartości z przedziału <1000,3000>, złożonych po dniu 10-05-1991
-\item Sortowanie wyniku zadania 5 po datach złożenia zamówień i po wartościach zamówień
+
+\item Sortowanie wyniku zadania po datach złożenia zamówień i po wartościach zamówień
+
 \item Dodawanie pracownika o danych z przykładowymi wartościami
+
 \item Modyfikacja płacę dodanego pracownika do wartości 2000. 
+
 \item Usunięcie dodanego pracownika w podpunkcie. 
+
 \item Wyświetlienie imia i nazwiska i nazwę etatu pracowników zatrudnionych na etacie  ANALYST. Wybieranie danych z dwóch tabel, należy zastosować złączenie (odpowiedni warunek w WHERE lub klauzulę JOIN). 
+
 \item Wyświetlienie wszystkich pracowników na etacie MANAGER, wynik posortowany po identyfikatorze.
+
 \end{enumerate}
+
+\section{Wnioski}
 
 
 \end{document}
