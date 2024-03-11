@@ -170,14 +170,19 @@ SELECT COUNT(ID_KLIENTA) AS ILOSC_KLIENTOW FROM KLIENCI;
 \end{figure}
 
 
-\item  Zwróć wartość najwyższej pensji, jaką ma pracownik w tabeli `PRACOWNICY'.  
-\begin{lstlisting}[style=SQL]
+\item Zwracanie wartości najwyższej pensji, jaką ma pracownik w tabeli `PRACOWNICY'.  
+\begin{lstlisting}[style=SQL, caption=\textit{Zwracanie wartości najwyższej pensji, jaką ma pracownik w tabeli `PRACOWNICY'}]
+SELECT MAX(PENSJA) FROM PENSJA;
 \end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{zadanie7.png}
+	\caption{\textit{Zwracanie wartości najwyższej pensji, jaką ma pracownik w tabeli `PRACOWNICY'}}
+\end{figure}
 
 
 \item Zwróć średnią arytmetyczną wszystkich pensji pracowników z etatu `MANAGER'.  
-\begin{lstlisting}[style=SQL]
-\end{lstlisting}
 
 
 \item Wyświetl wszystkich pracowników wraz z wydziałami, do których należą.
