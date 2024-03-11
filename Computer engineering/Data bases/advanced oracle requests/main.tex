@@ -243,28 +243,67 @@ SELECT IMIE, NAZWISKO FROM PRACOWNICY WHERE ID_ETATU IN (SELECT ID_ETATU FROM ET
 
 
 \item Wyświetlenie wszystkich pracowników, którzy związani są z siedzibami ``NEW YORK'' i ``DALLAS''. 
-\begin{lstlisting}[style=SQL]
+\begin{lstlisting}[style=SQL, caption=\textit{Wyświetlenie wszystkich pracowników, którzy związani są z siedzibami ``NEW YORK'' i ``DALLAS''}]
+SELECT PRACOWNICY.IMIE, PRACOWNICY.NAZWISKO, PRACOWNICY.ID_WYDZIALU, WYDZIALY.ID_SIEDZIBY, SIEDZIBY.REGION FROM PRACOWNICY JOIN WYDZIALY ON PRACOWNICY.ID_WYDZIALU = WYDZIALY.ID_WYDZIALU JOIN SIEDZIBY ON WYDZIALY.ID_SIEDZIBY = SIEDZIBY.ID_SIEDZIY WHERE SIEDZIBY.REGION IN ('NEW YORK','DALLAS');
 \end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{zadanie13.png}
+	\caption{\textit{Wyświetlenie wszystkich pracowników, którzy związanu są z siedzibami ``NEW YORK'' i ``DALLAS''}}
+\end{figure}
 
 
 \item Zliczanie ilości wszystkich pracowników poszczególnych etatów. Z wykorzystaniem grupowania. 
-\begin{lstlisting}[style=SQL]
+\begin{lstlisting}[style=SQL, caption=\textit{Zliczanie ilości wszystkich pracowników poszczególnych etatów. Z wykorzystaniem grupowania}]
+SELECT COUNT(ID_PRACOWNIKA), ETATY.ETAT FROM PRACOWNICY JOIN ETAT ON PRACOWNICY.ID_ETATU = ETATY.ID_ETATU GROUP BY ETATY.ETAT;
 \end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{zadanie14.png}
+	\caption{\textit{Zliczanie ilości wszystkich pracowników poszczególnych etatów. Z wykorzystaniem grupowania}}
+\end{figure}
 
 
 \item Podanie sumy wszystkich pensji z poszczególnych etatów (etat;suma).
-\begin{lstlisting}[style=SQL]
+\begin{lstlisting}[style=SQL, caption=\textit{Podanie sumy wszystkich pensji z poszczególnych etatów}]
+SELECT SUM(PENSJA), ETATY.ETAT FROM PRACOWNICY JOIN ETATY ON PRACOWNICY.ID_ETATU = ETATY.ID_ETATY GROUP BY ETATY.ETAT;
 \end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{zadanie15.png}
+	\caption{\textit{Podanie sumy wszystkich pensji z poszczególnych etatów}}
+\end{figure}
 
 
 \item Zliczanie ilości wszystkich pracowników poszczególnych wydziałów, których liczebność jest większa niż 4.  
-\begin{lstlisting}[style=SQL]
+\begin{lstlisting}[style=SQL, caption=\textit{Zliczanie ilości wszystkich pracowników poszczególnych wydziałów, których liczebność jest większa niż 4}]
+SELECT COUNT(ID_PRACOWNIKA), ETATY.ETAT FROM PRACOWNICY JOIN ETAT ON PRACOWNICY.ID_ETATU = ETATY.ID_ETATU GROUP BY ETATY.ETAT HAVING COUNT(ID_PRACOWNIKA) > 4;
 \end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{zadanie16.png}
+	\caption{\textit{Zliczanie ilości wszystkich pracowników poszczególnych wydziałów, których liczebność jest większa niż 4}}
+\end{figure}
 
 
 \item Wyświetlenie najmniej licznego wydziału w firmie (ilość pracowników).
-\begin{lstlisting}[style=SQL]
+\begin{lstlisting}[style=SQL, caption=\textit{Wyświetlenie najmniej licznego wydziału w firmie(ilość pracowników)}]
+SELECT COUNT(ID_PRACOWNIKA), WYDZIALY.NAZWA FROM PRACOWNICY JOIN WYDZIALY ON PRACOWNICY.ID_WYDZIALU = WYDZIALY.ID_WYDZIALU GROUP BY WYDZIALY.NAZWA ORDER BY COUNT(ID_PRACOWNIKA) ASC;
 \end{lstlisting}
+
+%
+% SELECT COUNT(ID_PRACOWNIKA), WYDZIALY.ID_WYDZIALU FROM PRACOWNICY JOIN WYDZIALY ON PRACOWNICY.ID_WYDZIALU = WYDZIALY.ID_WYDZIALU GROUP BY WYDZIALY.ID_WYDZIALU ORDER BY COUNT(ID_PRACOWNIKA) ASC;
+%
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{zadanie17.png}
+	\caption{\textit{Wyświetlenie najmniej licznego wydziału w firmie(ilość pracowników)}}
+\end{figure}
 \end{enumerate}
 
 
