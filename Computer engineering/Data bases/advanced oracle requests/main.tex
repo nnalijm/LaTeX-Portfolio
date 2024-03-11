@@ -194,9 +194,17 @@ SELECT AVG(PENSJA) FROM PRACOWNICY JOIN ETATY ON ETATY.ID_ETATU = PRACOWNICY.ID_
 \end{figure}
 
 
-\item Wyświetl wszystkich pracowników wraz z wydziałami, do których należą.
-\begin{lstlisting}[style=SQL]
+\item Wyświetlenie wszystkich pracowników wraz z wydziałami, do których należą.
+\begin{lstlisting}[style=SQL, caption=\textit{Wyświetlenie wszystkich pracowników wraz z wydziałami, do których należą}]
+SELECT PRACOWNICY.IMIE, PRACOWNICY.NAZWISKO, WYDZIALY.NAZWA FROM PRACOWNICY JOIN WYDZIALY ON WYDZIALY.ID_WYDZIALU = PRACOWNICY.ID_WYDZIALU;
 \end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{zadanie9.png}
+	\caption{\textit{Wyświetlenie wszystkich pracowników wraz z wydziałami, do których należą}}
+\end{figure}
+
 
 
 \item Wykonaj poprzednie zadanie z użyciem SQL Alias. Rezultat posortuj na podstawie wydziału i nazwiska pracownika.  
