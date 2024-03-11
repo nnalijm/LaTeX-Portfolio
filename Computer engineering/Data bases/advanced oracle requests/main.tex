@@ -158,9 +158,16 @@ SELECT IMIE, NAZWISKO FROM PRACOWNICY WHERE PROWIZJA BETWEEN 500 AND 900;
 \end{figure}
 
 
-\item Zlicz ilość rekordów w tabeli `KLIENCI'. 
-\begin{lstlisting}[style=SQL]
+\item Zliczanie ilości rekordów w tabeli `KLIENCI'. 
+\begin{lstlisting}[style=SQL, caption=\textit{Zliczanie ilości rekordów w tabeli `KLIENCI'}]
+SELECT COUNT(ID_KLIENTA) AS ILOSC_KLIENTOW FROM KLIENCI;
 \end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{zadanie6.png}
+	\caption{\textit{Zliczanie ilości rekordów w tabeli `KLIENCI'}}
+\end{figure}
 
 
 \item  Zwróć wartość najwyższej pensji, jaką ma pracownik w tabeli `PRACOWNICY'.  
