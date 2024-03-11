@@ -134,9 +134,16 @@ SELECT * FROM PRACOWNICY WHERE PROWIZJA IS NULL;
 \end{figure}
 
 
-\item Wyświetl dane wszystkich klientów niepochodzących z miasta `BURLINGAME'. Wykorzystaj operator IN. 
-\begin{lstlisting}[style=SQL]
+\item Wyświetlenie danych wszystkich klientów niepochodzących z miasta `BURLINGAME'. Wykorzystaj operator IN. 
+\begin{lstlisting}[style=SQL, caption=\textit{Wyświetlenie danych wszystkich klientów niepochodzących z miasta `BURLINGANE'}]
+SELECT * FROM KLIENCI WHERE MIASTO NOT IN ('BURLINGAME');
 \end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{zadanie4.png}
+	\caption{\textit{Wyświetlenie danych wszystkich klientów niepochodzących z miasta `BURLINGAME'}}
+\end{figure}
 
 
 \item Wyświetl imiona i nazwiska pracowników z prowizją o wartości w przedziale: <500;900>. Wykorzystaj operator BETWEEN. 
