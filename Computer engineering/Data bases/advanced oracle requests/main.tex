@@ -182,7 +182,16 @@ SELECT MAX(PENSJA) FROM PENSJA;
 \end{figure}
 
 
-\item Zwróć średnią arytmetyczną wszystkich pensji pracowników z etatu `MANAGER'.  
+\item Zwracanie średniej arytmetycznej wszystkich pensji pracowników z etatu `MANAGER'.  
+\begin{lstlisting}[style=SQL, caption=\textit{Zwracanie średniej arytmetycznej wszystkich pensji pracowników z etatu `MANAGER'}]
+SELECT AVG(PENSJA) FROM PRACOWNICY JOIN ETATY ON ETATY.ID_ETATU = PRACOWNICY.ID_ETATU WHERE ETATY.ETAT = 'MANAGER';
+\end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{zadanie8.png}
+	\caption{\textit{Zwracanie średniej arytmetycznej wszystkich pensji pracowników z etatu `MANAGER'}}
+\end{figure}
 
 
 \item Wyświetl wszystkich pracowników wraz z wydziałami, do których należą.
