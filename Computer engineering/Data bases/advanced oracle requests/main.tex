@@ -231,8 +231,15 @@ SELECY PRACOWNICY.IMIE, PRACOWNICY.NAZWISKO, ETATY.ETAT FROM PRACOWNICY INNER JO
 
 
 \item Pobranie pracowników o etacie z literą `L' w nazwie. Z wykorzystaniem WHERE do połączenia tabel. 
-\begin{lstlisting}[style=SQL]
+\begin{lstlisting}[style=SQL, caption=\textit{Pobranie pracowników o etacie z literą `L' w nazwie. Z wykorzystaniem WHERE do połączenia tabel}]
+SELECT IMIE, NAZWISKO FROM PRACOWNICY WHERE ID_ETATU IN (SELECT ID_ETATU FROM ETATY WHERE ETAT LIKE '%L%');
 \end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{zadanie12.png}
+	\caption{\textit{Pobranie pracowników o etacie z literą `L' w nazwie. Z wykorzystaniem WHERE do połączenia tabel}}
+\end{figure}
 
 
 \item Wyświetlenie wszystkich pracowników, którzy związani są z siedzibami ``NEW YORK'' i ``DALLAS''. 
