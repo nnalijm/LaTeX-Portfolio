@@ -146,9 +146,16 @@ SELECT * FROM KLIENCI WHERE MIASTO NOT IN ('BURLINGAME');
 \end{figure}
 
 
-\item Wyświetl imiona i nazwiska pracowników z prowizją o wartości w przedziale: <500;900>. Wykorzystaj operator BETWEEN. 
-\begin{lstlisting}[style=SQL]
+\item Wyświetlenie imion i nazwisk pracowników z prowizją o wartości w przedziale: <500;900>. Wykorzystaj operator BETWEEN. 
+\begin{lstlisting}[style=SQL, caption=\textit{Wyświetlenie imion i nazwisk pracowników z prowizją o wartości w przedziale: <500;900>}]
+SELECT IMIE, NAZWISKO FROM PRACOWNICY WHERE PROWIZJA BETWEEN 500 AND 900;
 \end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{zadanie5.png}
+	\caption{\textit{Wyświetlenie imion i nazwisk pracowników z prowizją o wartości w przedziale: <500;900>}}
+\end{figure}
 
 
 \item Zlicz ilość rekordów w tabeli `KLIENCI'. 
