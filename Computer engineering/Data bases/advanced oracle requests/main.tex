@@ -218,37 +218,44 @@ SELECT p.IMIE, p.NAZWISKO, w.NAZWA AS WYDZIAL FROM PRACOWNICY p JOIN WYDZIALY w 
 \end{figure}
 
 
-\item Pobierz pracowników o etacie z literą `L' w nazwie. Wykorzystaj INNER JOIN do połączenia tabel. 
+\item Pobranie pracowników o etacie z literą `L' w nazwie. Z wykorzystaiem INNER JOIN do połączenia tabel. 
+\begin{lstlisting}[style=SQL, caption=\textit{Pobranie pracowników o etacie z literą `L' w nazwie. Z wykorzystaniem INNER JOIN do połączenia tabel}]
+SELECY PRACOWNICY.IMIE, PRACOWNICY.NAZWISKO, ETATY.ETAT FROM PRACOWNICY INNER JOIN ETATY ON PRACOWNICY.ID_ETATU = ETATY.ID_ETATU WHERE ETATY.ETAT LIKE '%L%';
+\end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{zadanie11.png}
+	\caption{\textit{Pobranie pracowników o etacie z literą `L' w nazwie. Z wykorzystaniem INNER JOIN do polączenia tabel}}
+\end{figure}
+
+
+\item Pobranie pracowników o etacie z literą `L' w nazwie. Z wykorzystaniem WHERE do połączenia tabel. 
 \begin{lstlisting}[style=SQL]
 \end{lstlisting}
 
 
-\item Pobierz pracowników o etacie z literą `L' w nazwie. Wykorzystaj WHERE do połączenia tabel. 
+\item Wyświetlenie wszystkich pracowników, którzy związani są z siedzibami ``NEW YORK'' i ``DALLAS''. 
 \begin{lstlisting}[style=SQL]
 \end{lstlisting}
 
 
-\item Wyświetl wszystkich pracowników, którzy związani są z siedzibami ``NEW YORK'' i ``DALLAS''. 
+\item Zliczanie ilości wszystkich pracowników poszczególnych etatów. Z wykorzystaniem grupowania. 
 \begin{lstlisting}[style=SQL]
 \end{lstlisting}
 
 
-\item Zlicz ilość wszystkich pracowników poszczególnych etatów. Wykorzystaj grupowanie. 
+\item Podanie sumy wszystkich pensji z poszczególnych etatów (etat;suma).
 \begin{lstlisting}[style=SQL]
 \end{lstlisting}
 
 
-\item Podaj sumę wszystkich pensji z poszczególnych etatów (etat;suma).
+\item Zliczanie ilości wszystkich pracowników poszczególnych wydziałów, których liczebność jest większa niż 4.  
 \begin{lstlisting}[style=SQL]
 \end{lstlisting}
 
 
-\item Zlicz ilość wszystkich pracowników poszczególnych wydziałów, których liczebność jest większa niż 4.  
-\begin{lstlisting}[style=SQL]
-\end{lstlisting}
-
-
-\item Wyświetl najmniej liczny wydział w firmie (ilość pracowników).
+\item Wyświetlenie najmniej licznego wydziału w firmie (ilość pracowników).
 \begin{lstlisting}[style=SQL]
 \end{lstlisting}
 \end{enumerate}
