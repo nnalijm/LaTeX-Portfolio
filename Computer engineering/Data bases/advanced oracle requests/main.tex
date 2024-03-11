@@ -206,10 +206,16 @@ SELECT PRACOWNICY.IMIE, PRACOWNICY.NAZWISKO, WYDZIALY.NAZWA FROM PRACOWNICY JOIN
 \end{figure}
 
 
-
-\item Wykonaj poprzednie zadanie z użyciem SQL Alias. Rezultat posortuj na podstawie wydziału i nazwiska pracownika.  
-\begin{lstlisting}[style=SQL]
+\item Wykonanie poprzedniego zadania z użyciem SQL Alias. Rezultat posortowany na podstawie wydziału i nazwiska pracownika.  
+\begin{lstlisting}[style=SQL, caption=\textit{Wykonanie poprzedniego zadania z użyciem SQL Alias}]
+SELECT p.IMIE, p.NAZWISKO, w.NAZWA AS WYDZIAL FROM PRACOWNICY p JOIN WYDZIALY w ON p.ID_WYDZIALU = w.ID_WYDZIALU ORDER BY w.NAZWA, p.NAZWISKO;
 \end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{zadanie10.png}
+	\caption{\textit{Wykonanie poprzedniego zadania z użyciem SQL Alias}}
+\end{figure}
 
 
 \item Pobierz pracowników o etacie z literą `L' w nazwie. Wykorzystaj INNER JOIN do połączenia tabel. 
