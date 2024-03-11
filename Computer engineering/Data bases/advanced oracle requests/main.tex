@@ -110,7 +110,7 @@ SELECT ID_PRACOWNIKA,IMIE,NAZWISKO,(PENSJA+PROWIZJA) AS Wartosc FROM PRACOWNICY;
 	\caption{\textit{Wyświetlenie id, imia, nazwiska, oraz sumy pensji i prowizji każdego z pracowników}}
 \end{figure}
 
-\item Wyświetl dane pracowników po 0.1\% podwyżce.
+\item Wyświetlenie danych pracowników po 0.1\% podwyżce.
 \begin{lstlisting}[style=SQL, caption=\textit{Wyświetlenie danych pracowników po 0.1 podwyżce}]
 SELECT ID_PRACOWNIKA, IMIE, NAZWISKO, PENSJA * 1.001 AS PENSJA FROM PRACOWNICY;
 \end{lstlisting}
@@ -122,9 +122,16 @@ SELECT ID_PRACOWNIKA, IMIE, NAZWISKO, PENSJA * 1.001 AS PENSJA FROM PRACOWNICY;
 \end{figure}
 
 
-\item Wyświetl wszystkich pracowników z nieznaną prowizji.  
-\begin{lstlisting}[style=SQL]
+\item Wyświetlenie wszystkich pracowników z nieznaną prowizji.  
+\begin{lstlisting}[style=SQL, caption=\textit{Wyświetlenie wszystkich pracowników z nieznaną prowizji}]
+SELECT * FROM PRACOWNICY WHERE PROWIZJA IS NULL;
 \end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{zadanie3.png}
+	\caption{\textit{Wyświetlenie wszystkich pracowników z nieznaną prowizji}}
+\end{figure}
 
 
 \item Wyświetl dane wszystkich klientów niepochodzących z miasta `BURLINGAME'. Wykorzystaj operator IN. 
