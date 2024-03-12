@@ -121,6 +121,7 @@ SELECT ID_PRACOWNIKA, IMIE, NAZWISKO, PENSJA * 1.001 AS PENSJA FROM PRACOWNICY;
 	\caption{\textit{Wyświetlenie danych pracowników po 0.1 podwyżce}}
 \end{figure}
 
+\newpage
 
 \item Wyświetlenie wszystkich pracowników z nieznaną prowizji.  
 \begin{lstlisting}[style=SQL, caption=\textit{Wyświetlenie wszystkich pracowników z nieznaną prowizji}]
@@ -157,6 +158,7 @@ SELECT IMIE, NAZWISKO FROM PRACOWNICY WHERE PROWIZJA BETWEEN 500 AND 900;
 	\caption{\textit{Wyświetlenie imion i nazwisk pracowników z prowizją o wartości w przedziale: <500;900>}}
 \end{figure}
 
+\newpage
 
 \item Zliczanie ilości rekordów w tabeli `KLIENCI'. 
 \begin{lstlisting}[style=SQL, caption=\textit{Zliczanie ilości rekordów w tabeli `KLIENCI'}]
@@ -229,6 +231,7 @@ SELECY PRACOWNICY.IMIE, PRACOWNICY.NAZWISKO, ETATY.ETAT FROM PRACOWNICY INNER JO
 	\caption{\textit{Pobranie pracowników o etacie z literą `L' w nazwie. Z wykorzystaniem INNER JOIN do polączenia tabel}}
 \end{figure}
 
+\newpage
 
 \item Pobranie pracowników o etacie z literą `L' w nazwie. Z wykorzystaniem WHERE do połączenia tabel. 
 \begin{lstlisting}[style=SQL, caption=\textit{Pobranie pracowników o etacie z literą `L' w nazwie. Z wykorzystaniem WHERE do połączenia tabel}]
@@ -253,6 +256,7 @@ SELECT PRACOWNICY.IMIE, PRACOWNICY.NAZWISKO, PRACOWNICY.ID_WYDZIALU, WYDZIALY.ID
 	\caption{\textit{Wyświetlenie wszystkich pracowników, którzy związanu są z siedzibami ``NEW YORK'' i ``DALLAS''}}
 \end{figure}
 
+\newpage
 
 \item Zliczanie ilości wszystkich pracowników poszczególnych etatów. Z wykorzystaniem grupowania. 
 \begin{lstlisting}[style=SQL, caption=\textit{Zliczanie ilości wszystkich pracowników poszczególnych etatów. Z wykorzystaniem grupowania}]
