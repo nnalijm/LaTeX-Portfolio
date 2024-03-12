@@ -1,62 +1,8 @@
 \documentclass[a4paper, 10pt]{article}
 
-\usepackage{graphicx}
-\usepackage[T1]{fontenc}
-\usepackage[polish]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage[left=25mm, right=25mm, top=25mm, bottom=25mm]{geometry}
-\usepackage{listings}
-\usepackage{hyperref}
-\usepackage{caption}
-\usepackage{float}
-\usepackage{xcolor}
-\usepackage{color}
-
-
+\usepackage{../packages}
 
 \graphicspath{{./figures}}
-
-\renewcommand\contentsname{Spis treści}
-\renewcommand\listfigurename{Spis rysunków}
-\renewcommand\lstlistingname{Polecenie}
-\renewcommand\lstlistlistingname{Spis poleceń}
-
-\definecolor{codegreen}{rgb}{0,0.6,0}
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-\definecolor{codepurple}{HTML}{C42043}
-\definecolor{backcolour}{HTML}{F2F2F2}
-\definecolor{bookColor}{cmyk}{0,0,0,0.90}
-
-\captionsetup[lstlisting]{
-    labelsep=period,
-    justification=centering,
-    singlelinecheck=false,
-    width=0.9\linewidth
-}
-
-\captionsetup[figure]{
-    justification=centering,
-    singlelinecheck=false,
-    width=.9\linewidth
-}
-
-\lstdefinestyle{SQL}{
-    language=SQL,
-    backgroundcolor=\color{backcolour},
-    basicstyle=\footnotesize\ttfamily,
-    breaklines=true,
-    captionpos=b,
-    commentstyle=\color{green},
-    keywordstyle=\color{red},
-    stringstyle=\color{red},
-    showstringspaces=false,
-    tabsize=2,
-    morekeywords={USE, CREATE, TABLE, VARCHAR, INT, NOT, NULL, PRIMARY, KEY, AUTO_INCREMENT, INSERT, INTO, VALUES, SELECT, FROM, WHERE, ORDER, BY, ASC, DESC, GROUP, HAVING, UPDATE, SET, DELETE, JOIN, LEFT, RIGHT, OUTER, INNER, ON},
-    frame=single,
-    framesep=5pt,
-    rulecolor=\color{gray},
-    linewidth=1\linewidth
-}
 
 \begin{document}
 \begin{titlepage}
