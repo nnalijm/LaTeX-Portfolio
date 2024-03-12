@@ -4,6 +4,8 @@
 \usepackage[T1]{fontenc}
 \usepackage[polish]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{blindtext}
 
 
 \graphicspath{{./figures}}
@@ -31,5 +33,59 @@
 	\today
 \end{center}
 \end{titlepage}
+
+\tableofcontents
+\listoffigures
+\lstlistoflistings
+
+\newpage
+ 
+\section{Wprowadzenie}
+
+\subsection{Cel ćwiczenia}
+
+\blindtext
+\subsection{Przygotowanie}
+
+\blindtext
+
+\section{Realizacja}
+
+\begin{enumerate}
+\item Tworzenie tabeli \emph{TEST} zawierającą 4 przykładowe pola przechowujące informacje z Identyfikatorem, tekstem, czasem i wartością zmiennoprzecinkową
+
+\item Usunięcie stworzonej tabeli odpowiednią komendą SQL.
+
+\item Tworzenie tabeli \emph{ZADANIA(TASKS)} zawierającą następujące kolumny:
+\begin{itemize}
+\item ID\_ZADANIE
+\item NAZWA
+\item DATA\_ROZPOCZECIA
+\item DATA\_ZAKONCZENIA
+\end{itemize}
+
+\item Dodanie nowej kolumny \emph{KOMENTARZ}(ALTER)
+
+\item Realizacja powiązania tabeli \emph{ZADANIA} z tabelą \emph{PRACOWNICY}
+
+\item Modyfikacja tabeli \emph{ZADANIA} w taki sposób, aby rekordy miały określone ograniczenia:
+\begin{itemize}
+\item ID\_ZADANIE -- PRIMARY KEY
+\item NAZWA -- UNIQUE
+\item DATA\_ROZPOCZECIA -- NOT NULL
+\item KOMENTARZ -- NOT NULL, DEFAULT
+\item ID\_PRACOWNIKA -- FOREIGN KEY
+\end{itemize}
+
+\item Dodanie do tabeli \emph{ZADANIA} siedem przykładowych zadań powiązanych odpowiednią relacją z tabelą \emph{PRACOWNICY}. Jeden pracownik musi posiadać przynajmniej trzy zadania.
+
+\item Wyświetlenie następującego wyniku z użyciem zapytania SQL(nagłówek tabeli wynikowej): ID\_PRACOWNIKA|NAZWISKO|IMIE|ILOSC ZADAN
+
+\item Wyświetlenie następującego wyniku z użyciem zapytania SQL(nagłówek tabeli wynikowej): ID\_PRACOWNIKA|NAZWISKO|IMIE|ILOSC TRWAJACYCH ZADAN
+
+\item Wyświetlenie wszystkich pracowników posiadających przynajmniej dwa zadania
+
+\end{enumerate}
+\section{Wnioski}
 
 \end{document}
