@@ -44,9 +44,25 @@
 \section{Realizacja}
 
 \begin{enumerate}
-\item Tworzenie tabeli \emph{TEST} zawierającą 4 przykładowe pola przechowujące informacje z Identyfikatorem, tekstem, czasem i wartością zmiennoprzecinkową
+\item Tworzenie tabeli \emph{TEST} zawierającej 4 przykładowe pola przechowujące informacje z Identyfikatorem, tekstem, czasem i wartością zmiennoprzecinkową
+
+\begin{lstlisting}[style=SQL, caption=\textit{Tworzenie tabeli ``TEST'' zawirającej 4 przykładowe pola przechowujące informacje z Identyfikatorem, tekstem, czasem i warością zmiennoprzecinkową}]
+\end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\caption{\textit{Tworzenie tabeli ``TEST'' zawirającej 4 przykładowe pola przechowujące informacje z Identyfikatorem, tekstem, czasem i warością zmiennoprzecinkową}}
+\end{figure}
 
 \item Usunięcie stworzonej tabeli odpowiednią komendą SQL.
+
+\begin{lstlisting}[style=SQL,caption=\textit{Usunięcie stworzonej tabeli odpowiednią komendą SQL}]
+\end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\caption{\textit{Usunięcie stworzonej tabeli odpowiednią komendą SQL}}
+\end{figure}
 
 \item Tworzenie tabeli \emph{ZADANIA(TASKS)} zawierającą następujące kolumny:
 \begin{itemize}
@@ -56,9 +72,33 @@
 \item DATA\_ZAKONCZENIA
 \end{itemize}
 
+\begin{lstlisting}[style=SQL,caption=\textit{Tworzenie tabeli ``ZADANIA''}]
+\end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\caption{\textit{Tworzenie tabeli ``ZADANIA''}}
+\end{figure}
+
 \item Dodanie nowej kolumny \emph{KOMENTARZ}(ALTER)
 
+\begin{lstlisting}[style=SQL,caption=\textit{Dodanie nowej kolumny ``KOMENTARZ''}]
+\end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\caption{\textit{Dodanie nowej kolumny ``KOMENTARZ''}}
+\end{figure}
+
 \item Realizacja powiązania tabeli \emph{ZADANIA} z tabelą \emph{PRACOWNICY}
+
+\begin{lstlisting}[style=SQL,caption=\textit{Realizacja powiązania tabeli ``ZADANIA'' z tabelą ``PRACOWNICY''}]
+\end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\caption{\textit{Realizacja powiązania tabeli ``ZADANIA'' z tabelą ``PRACOWNICY''}}
+\end{figure}
 
 \item Modyfikacja tabeli \emph{ZADANIA} w taki sposób, aby rekordy miały określone ograniczenia:
 \begin{itemize}
@@ -69,13 +109,54 @@
 \item ID\_PRACOWNIKA -- FOREIGN KEY
 \end{itemize}
 
+\begin{lstlisting}[style=SQL, caption=\textit{Modyfikacja tabeli ``ZADANIA''}]
+\end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\caption{\textit{Modyfikacja tabeli ``ZADANIA''}}
+\end{figure}
+
 \item Dodanie do tabeli \emph{ZADANIA} siedem przykładowych zadań powiązanych odpowiednią relacją z tabelą \emph{PRACOWNICY}. Jeden pracownik musi posiadać przynajmniej trzy zadania.
+
+\begin{lstlisting}[style=SQL, caption=\textit{Dodanie do tabeli ``ZADANIA''}]
+\end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\caption{\textit{Dodanie do tabeli ``ZADANIA''}}
+\end{figure}
 
 \item Wyświetlenie następującego wyniku z użyciem zapytania SQL(nagłówek tabeli wynikowej): ID\_PRACOWNIKA|NAZWISKO|IMIE|ILOSC ZADAN
 
+\begin{lstlisting}[style=SQL, caption=\textit{Wyświetlenie następującego wyniku z użyciem zapytania SQL}]
+\end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\caption{\textit{Wyświetlenie następującego wyniku z użyciem zapytania SQL}}
+\end{figure}
+
 \item Wyświetlenie następującego wyniku z użyciem zapytania SQL(nagłówek tabeli wynikowej): ID\_PRACOWNIKA|NAZWISKO|IMIE|ILOSC TRWAJACYCH ZADAN
 
+\begin{lstlisting}[style=SQL, caption=\textit{Wyświetlenie następującego wyniku z użyciem zapytania SQL}]
+\end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\caption{\textit{Wyświetlenie następującego wyniku z użyciem zapytania SQL}}
+\end{figure}
+
 \item Wyświetlenie wszystkich pracowników posiadających przynajmniej dwa zadania
+
+\begin{lstlisting}[style=SQL, caption=\textit{Wyświetlenie wszystkich pracowników posiadających przynajmniej dwa zadania}]
+\end{lstlisting}
+
+\begin{figure}[H]
+	\centering
+	\caption{\textit{Wyświetlenie wszystkich pracowników posiadających przynajmniej dwa zadania}}
+\end{figure}
+
 
 \end{enumerate}
 \section{Wnioski}
