@@ -1,0 +1,78 @@
+\documentclass{article}
+
+\usepackage{../packages}
+
+\graphicspath{{./figures}}
+
+
+\begin{document}
+\begin{titlepage}
+\begin{center}
+	\includegraphics[scale=0.7]{logo.png}
+
+	\vspace*{4cm}
+	\textbf{Bazy danych\\ Laboratorium}
+
+	\vspace{1.5cm}
+	\textit{Zapytania DDL SQL Oracle 2}
+
+	\vspace{1.5cm}
+	\textbf{Stanislau Antanovich}\\
+	nr. indeksu: 173590\\
+	gr. lab: L04
+
+	\vspace{4.5cm}
+	\today
+\end{center}
+\end{titlepage}
+
+\tableofcontents
+\listoffigures
+\lstlistoflistings
+
+\newpage
+ 
+\section{Wprowadzenie}
+
+\subsection{Cel ćwiczenia}
+
+\subsection{Przygotowanie}
+
+\section{Realizacja}
+
+\begin{enumerate}
+\item Tworzenie i wywołanie procedury \textbf{dodaj\_etat} pozwalającej na dodanie nowego etatu
+
+\item Tworzenie i wywołanie procedury \textbf{usun\_pracownika} pozwalającej na usunięcie pracownika na podstawie podanego id(parametr wejściowy)
+
+\item Tworzenie i wywołanie proceduty \textbf{edytuj\_pracownika} pozwalającej na edytowanie kolumn pracownika na podstawie podanych parametrów
+
+\item Modyfikacja procedury \textbf{dodaj\_tekst} w taki sposób, aby uniknąć wystąpienia duplikującego się rekordu.
+
+\item Zaproponowana funkcja \textbf{srednia\_pensja}, która zwraca średnią pensję wszystkich pracowników
+
+\item Zaproponowana funkcja \textbf{zmien\_prowizje}, która umożliwi na podstawie id pracownika zmienić jego prowizję. W przypadku wprowadzonej wartości poniżej zera funkcja ma zgłosić odpowiedni wyjątek
+
+\item Zaproponowana funkcja \textbf{ilosc\_pracownicy\_z\_pensja} umożliwiająca zwrócenie ilości pracowników, których pensja mieści się w podanym przedziale <min;max>
+
+\item Zaproponowana funkcja \textbf{zwiekz\_pensje}, która na podstawie id pracownika zmienia wartość kolumny pensja zgodnie z zasadami:
+\begin{itemize}
+\item jeżeli pracownik nie ma zwierzchnika jego pensja nie ulega zmianie
+\item jeżeli pracownik ma zwierzchnika, ale ma prowizje, pensja zwiększa się o wartość 100
+\item jeżeli pracownik ma zwierzchnika, ale nie ma prowizji, pensja zwiększa się o 10\%
+\item funkcja zwraca nową pensję jako wartość
+\end{itemize}
+
+\item Wywołanie komendy usunięcia dowolnej procedury i funkcji
+
+\item Zaproponowany typ pozwalający przechowywać dane obiektu \textbf{ETAT} oraz tabelę etatów
+
+\item Zaproponowana funkcja zwracająca tabelę z danymi obiektów \textbf{ETAT} zaproponowanymi w poprzedznim zadaniu. Dane(id, etat):(`100',`stażysta'),(`101',`junior'),(`102',`medium'),(`103',`master')
+
+\item Zaproponowana funkcja \textbf{zwroc\_etaty}, która zwraca wszystkie etaty w formie tabeli
+\end{enumerate}
+
+\section{Wnioski}
+
+
+\end{document}
