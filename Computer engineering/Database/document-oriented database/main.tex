@@ -25,4 +25,43 @@
 \end{center}
 \end{titlepage}
 
+\section{Wprowadzenie}
+
+\subsection{Cel ćwiczenia}
+
+\subsection{Przygotowanie}
+
+Przed realizacją zadań są wymagane następujące kroki:
+
+\begin{itemize}
+\item zainstalowanie usługi \textbf{MongoDB}
+\item zainstalowanie narzędzia do obsługi bazy danych \textbf{MongoDB}
+\item pobranie plików bazy danych
+\item zaimportowanie do \textbf{MongoDB} plików \emph{yelp\_academic\_data}
+\item połączenie z bazą danych z użyciem narzędzia Robo 3T
+\end{itemize}
+
+\section{Realizacja}
+
+Po realizacji połączenia za pomocą narzędzia Robo 3T jest wymagane wykonanie następujących poleceń.
+\begin{enumerate}
+\item Dodanie do stworzonej bazy kolekcję ``student'': imię, nazwisko, obecność(typ bool), ocena z lab.(null), aktualna data, zaliczone przedmioty(min 3 przykładowe)
+
+\item Zwracanie bez powtórzeń wszystkich nazw miast w których znajdują się firmy(business). Wynik posortowany na podstawie nazwy miasta alfabetycznie
+
+\item Zwracanie liczby wszystkich recenzji, które pojawiły się po 2011 roku(włącznie)
+
+\item Zwracanie danych wszystkich zamkniętych(open) firm(business) z pól: nazwa, adres, gwiazdki(stars)
+
+\item Zwracanie danych wszystkich użytkowników(user), którzy nie uzyskali ani jednego pozytywnego głosu z kategorii(funny lub useful), wynik posortowany alfabetycznie na podstawie imienia użytkownika
+
+\item Określenie, ile każde przedsiębiorstwo otrzymało wskazówek/napiwków(tip) w 2012. Wynik posortowany alfabetycznie na podstawie liczby(tip)
+
+\item Wyznaczenie, jaką średnią ocen(stars) uzyskała każda firma(business) na podstawie wszystkich recenzji. Wynik ograniczony do recenzji, które uzyskały min 4.0 gwiazdki
+
+\item Usunięcie wszystkich firm(business), które posiadają ocenę(stars) równą 2.0
+\end{enumerate}
+
+\section{Wnioski}
+
 \end{document}
