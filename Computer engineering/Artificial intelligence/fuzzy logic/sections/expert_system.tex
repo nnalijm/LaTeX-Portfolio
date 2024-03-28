@@ -42,13 +42,13 @@ W \textbf{etapie drugim} do systemu zostanie dodane gruga zmienna wejściowa \em
 
 W tej sekcji inicjujemy wszystkie wymagane biblioteki dla prawidłowego działania programu.
 
-\lstinputlisting[firstline=0, lastline=4]{./code/main.py}
+\lstinputlisting[firstline=0, lastline=4, style=PYTHON]{./code/main.py}
 
 \subsubsection{Tworzenie zmiennych stanu poprzednika ``obsługa'' oraz następnika ``napiwek''}\label{ssc:tworzenie}
 
 W tej sekcji tworzymy zmienne stanu poprzednika ``obsługa'' oraz następnika ``napiwek''.
 
-\lstinputlisting[firstline=6, lastline=7]{./code/main.py}
+\lstinputlisting[style=PYTHON, firstline=6, lastline=7]{./code/main.py}
 
 \subsubsection{Dodanie zbiorów rozmytych}\label{ssc:dodanie_zbiorow_rozmytych}
  
@@ -58,31 +58,31 @@ Zbiór \emph{slaba} o centrum umieszczonym w punkcie uniwersum równym \textbf{0
 
 Dla zmiennej \emph{napiwek} dodajemy zbiory trójkątne: \emph{maly, sredni, duzy} o parametrach [0, 5, 10], [10, 15, 20] i [20, 25, 30] odpowiednio.
 
-\lstinputlisting[firstline=10, lastline=16]{./code/main.py}
+\lstinputlisting[style=PYTHON, firstline=10, lastline=16]{./code/main.py}
 
 \subsubsection{Podgląd zbiorów rozmytych}\label{ssc:podglad_zbiorow}
 
 Podgląd zbiorów rozmytch można zrealizować metodą \verb|view()| dla poszczególnych zmiennych stanu.
 
-\lstinputlisting[firstline=21, lastline=22]{./code/main.py}
+\lstinputlisting[style=PYTHON, firstline=21, lastline=22]{./code/main.py}
 
 \subsubsection{Definicja reguł}\label{ssc:definicja_regul}
 
 W tej sekcji definiujemy reguły.
 
-\lstinputlisting[firstline=25, lastline=27]{./code/main.py}
+\lstinputlisting[style=PYTHON, firstline=25, lastline=27]{./code/main.py}
 
 \subsubsection{Dodanie reguł do systemu rozmytego}\label{ssc:dodanie_regul}
 
 W tej sekcji dodajemy powyżej zdefiniowane reguły do systemu rozmytego.
 
-\lstinputlisting[firstline=31, lastline=32]{./code/main.py}
+\lstinputlisting[style=PYTHON, firstline=31, lastline=32]{./code/main.py}
 
 \subsubsection{Sprawdzenie działania systemu}\label{ssc:sprawdzenie_dzialania}
 
 W tej sekcji sprawdzamy działanie systemu dla wartości obsługi równej \textbf{0}(rys. \ref{fig:obsluga0}) oraz dla wartości równej \textbf{10}(rys. \ref{fig:obsluga10}).
 
-\lstinputlisting[firstline=35,lastline=39]{./code/main.py}
+\lstinputlisting[style=PYTHON, firstline=35,lastline=39]{./code/main.py}
 
 Wartość napiwku dla wartości obsługi wynosi: 5.07657801
 
@@ -107,7 +107,7 @@ Wartość napiwku dla wartości obsługi wynosi: 24.9234219
 
 W tej sekcji sprawdzamy działanie systemu dla wartości obsługi od 0 do 10(rys. \ref{fig:napiwek_obsluga} wykres funkcji napiwek=f(obsluga)).
 
-\lstinputlisting[firstline=41, lastline=53]{./code/main.py}
+\lstinputlisting[style=PYTHON, firstline=41, lastline=53]{./code/main.py}
 
 \begin{figure}[H]
 	\centering
@@ -120,26 +120,26 @@ W tej sekcji sprawdzamy działanie systemu dla wartości obsługi od 0 do 10(rys
  
 W tej selcji dodajemy drugą wejściową zmienną stanu ``jedzenie'' o trapezoidalnych(\verb|trapmf|) zbiorach rozmytych ``zepsute'' oraz ``wyborne''.
 
-\lstinputlisting[firstline=8, lastline=8]{./code/main.py}
-\lstinputlisting[firstline=18, lastline=19]{./code/main.py}
+\lstinputlisting[style=PYTHON, firstline=8, lastline=8]{./code/main.py}
+\lstinputlisting[style=PYTHON, firstline=18, lastline=19]{./code/main.py}
 
 \subsubsection{Dodanie reguł 4 i 5}\label{ssc:dodanie_regul45}
 
 W tej sekcji dodajemy reguły 4 i 5 analogicznie do punktu \ref{ssc:definicja_regul}.
 
-\lstinputlisting[firstline=28, lastline=29]{./code/main.py}
+\lstinputlisting[style=PYTHON, firstline=28, lastline=29]{./code/main.py}
 
 \subsubsection{Sprawdzenie działania systemu dla wartości ``obsługi''}\label{ssc:sprawdzenie_dzialania_wartosc_obsluga}
 
 W tej sekcji sprawdzamy działanie systemu dla wartości obsługi równej \textbf{0} oraz wartości jedzenia równej \textbf{0}.
 
-\lstinputlisting[firstline=34, lastline=39]{./code/main.py}
+\lstinputlisting[style=PYTHON, firstline=34, lastline=39]{./code/main.py}
 
 \subsubsection{Sprawdzenie działania systemu dla wartości ``obsługi'' i ``jedzenia''}\label{ssc:sprawdzenie_dzialania_obsluga_jedzenie}
 
 W tej sekcji sprawdzamy działanie systemu dla wartości obsługi i jedzenia od 0 do 10(rys. \ref{fig:napiwek_obsluga_jedzenie})
 
-\lstinputlisting[firstline=55,lastline=75]{./code/main.py}
+\lstinputlisting[style=PYTHON, firstline=55,lastline=75]{./code/main.py}
 
 \begin{figure}[h]
 	\centering
