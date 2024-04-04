@@ -8,7 +8,6 @@
 - [Khepera mobile robot](#khepera-mobile-robot)
   - [Obstacle avoidance task](#obstacle-avoidence-task)
   - [Following an object task](#following-object-task)
-- [Neuron model](#neuron-model)
 - [Braitenberg's algorithm](#braitenbergs-algorithm)
 - [Feedforward neural networks](#feedforward-neural-networks)
   - [Single-layer neural network](#single-layer-neural-network)
@@ -27,8 +26,6 @@ The aim of the exercise is to learn how to synthesize a role-playing expert syst
 The laboratory consists of three main parts. Part I aims to familiarize you with the structure and how to control the Khepera III mobile robot using dedicated Python functions. In part II, a Mamdani-type [expert system](https://en.wikipedia.org/wiki/Expert_system) will be designed using the library scikit-learn performing the task of avoiding obstacles. Part III of the lab is hands-on verifying the correctness of the implemented system in controlling a real robot.
 
 ### Following an object task
-
-## Neuron model
 
 ## Braitenberg's algorithm
 
