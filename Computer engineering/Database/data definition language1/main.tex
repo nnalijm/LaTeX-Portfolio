@@ -52,42 +52,54 @@ CREATE TABLE TEST (ID INT PRIMARY KEY, TEKST VARCHAR(255), CZAS TIMESTAMP, WARTO
 
 \begin{figure}[H]
 	\centering
+	\includegraphics[scale=1]{zadanie1.png}
 	\caption{\textit{Tworzenie tabeli ``TEST'' zawirającej 4 przykładowe pola przechowujące informacje z Identyfikatorem, tekstem, czasem i warością zmiennoprzecinkową}}
 \end{figure}
 
 \item Usunięcie stworzonej tabeli odpowiednią komendą SQL.
 
 \begin{lstlisting}[style=SQL,caption=\textit{Usunięcie stworzonej tabeli odpowiednią komendą SQL}]
+DROP TABLE TEST;
 \end{lstlisting}
 
 \begin{figure}[H]
 	\centering
+	\includegraphics[scale=1]{zadanie2.png}
 	\caption{\textit{Usunięcie stworzonej tabeli odpowiednią komendą SQL}}
 \end{figure}
 
 \item Tworzenie tabeli \emph{ZADANIA(TASKS)} zawierającą następujące kolumny:
 \begin{itemize}
-\item ID\_ZADANIE
+\item ID\_ZADANIA
 \item NAZWA
 \item DATA\_ROZPOCZECIA
 \item DATA\_ZAKONCZENIA
 \end{itemize}
 
 \begin{lstlisting}[style=SQL,caption=\textit{Tworzenie tabeli ``ZADANIA''}]
+CREATE TABLE ZADANIA (
+	ID_ZADANIA INT PRIMARY KEY,
+	NAZWA VARCHAR(255),
+	DATA_ROZPOCZECIA DATE,
+	DATA_ZAKONCZENIA DATE
+);
 \end{lstlisting}
 
 \begin{figure}[H]
 	\centering
+	\includegraphics[scale=1]{zadanie3.png}
 	\caption{\textit{Tworzenie tabeli ``ZADANIA''}}
 \end{figure}
 
 \item Dodanie nowej kolumny \emph{KOMENTARZ}(ALTER)
 
 \begin{lstlisting}[style=SQL,caption=\textit{Dodanie nowej kolumny ``KOMENTARZ''}]
+ALTER TABLE ZADANIA ADD KOMENTARZ VARCHAR(255);
 \end{lstlisting}
 
 \begin{figure}[H]
 	\centering
+	\includegraphics[scale=1]{zadanie4.png}
 	\caption{\textit{Dodanie nowej kolumny ``KOMENTARZ''}}
 \end{figure}
 
@@ -111,6 +123,15 @@ CREATE TABLE TEST (ID INT PRIMARY KEY, TEKST VARCHAR(255), CZAS TIMESTAMP, WARTO
 \end{itemize}
 
 \begin{lstlisting}[style=SQL, caption=\textit{Modyfikacja tabeli ``ZADANIA''}]
+CREATE TABLE ZADANIA (
+    ID_ZADANIA INT PRIMARY KEY,
+    NAZWA VARCHAR(100) UNIQUE,
+    DATA_ROZPOCZECIA DATE NOT NULL,
+    DATA_ZAKONCZENIA DATE,
+    KOMENTARZ VARCHAR(255) NOT NULL DEFAULT 'komentarz',
+    ID_PRACOWNIKA INT,
+    FOREIGN KEY (ID_PRACOWNIKA) REFERENCES PRACOWNICY(ID_PRACOWNIKA)
+);
 \end{lstlisting}
 
 \begin{figure}[H]
