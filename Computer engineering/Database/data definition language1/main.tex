@@ -106,10 +106,13 @@ ALTER TABLE ZADANIA ADD KOMENTARZ VARCHAR(255);
 \item Realizacja powiązania tabeli \emph{ZADANIA} z tabelą \emph{PRACOWNICY}
 
 \begin{lstlisting}[style=SQL,caption=\textit{Realizacja powiązania tabeli ``ZADANIA'' z tabelą ``PRACOWNICY''}]
+ALTER TABLE ZADANIA ADD ID_PRACOWNIKA NUMBER(4);
+ALTER TABLE ZADANIA ADD CONSTRAINT FK_PRACOWNIK FOREIGN KEY (ID_PRACOWNIKA) REFERENCES PRACOWNICY(ID_PRACONIKA);
 \end{lstlisting}
 
 \begin{figure}[H]
 	\centering
+	\includegraphics[scale=1.2]{zadanie5.png}
 	\caption{\textit{Realizacja powiązania tabeli ``ZADANIA'' z tabelą ``PRACOWNICY''}}
 \end{figure}
 
