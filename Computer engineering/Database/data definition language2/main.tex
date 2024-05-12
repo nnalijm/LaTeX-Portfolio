@@ -22,7 +22,6 @@
 	gr. lab: L04
 
 	\vspace{4.5cm}
-	\today
 \end{center}
 \end{titlepage}
 
@@ -43,7 +42,34 @@
 \begin{enumerate}
 \item Tworzenie i wywołanie procedury \textbf{dodaj\_etat} pozwalającej na dodanie nowego etatu
 
+\begin{lstlisting}[style=SQL, caption=\textit{Tworzenie i wywołanie procedury \textbf{dodaj\_etat}}]
+CREATE PROCEDURE dodaj_etat(
+	p_id IN NUMBER,
+	p_etat IN VARCHAR
+) AS
+BEGIN
+	INSERT INTO ETATY (ID_ETATU, ETAT) VALUES (p_id, p_etat);
+	COMMIT;
+END dodaj_etat;
+
+EXEC dodaj_etat(673, 'EMPLOYEE')
+\end{lstlisting}
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=1.2]{zadanie1.png}
+			\caption{\textit{Tworzenie i wywołanie procedury \textbf{dodaj\_etat}}}
+		\end{figure}
+
 \item Tworzenie i wywołanie procedury \textbf{usun\_pracownika} pozwalającej na usunięcie pracownika na podstawie podanego id(parametr wejściowy)
+
+	\begin{lstlisting}[style=SQL, caption=\textit{Tworzenie i wywołanie procedury \textbf{usun\_pracownika}}]
+	\end{lstlisting}
+
+		\begin{figure}[H]
+			\centering
+			\caption{\textit{Tworzenie i wywołanie procedury \textbf{usun\_pracownika}}}
+		\end{figure}
 
 \item Tworzenie i wywołanie proceduty \textbf{edytuj\_pracownika} pozwalającej na edytowanie kolumn pracownika na podstawie podanych parametrów
 
