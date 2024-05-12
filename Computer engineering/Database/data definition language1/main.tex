@@ -131,7 +131,7 @@ CREATE TABLE ZADANIA (
     NAZWA VARCHAR(100) UNIQUE,
     DATA_ROZPOCZECIA DATE NOT NULL,
     DATA_ZAKONCZENIA DATE,
-    KOMENTARZ VARCHAR(255) NOT NULL DEFAULT 'komentarz',
+    KOMENTARZ VARCHAR(255) NOT NULL DEFAULT 'KOMENTARZ',
     ID_PRACOWNIKA INT,
     FOREIGN KEY (ID_PRACOWNIKA) REFERENCES PRACOWNICY(ID_PRACOWNIKA)
 );
@@ -139,46 +139,67 @@ CREATE TABLE ZADANIA (
 
 \begin{figure}[H]
 	\centering
+	\includegraphics[scale=1.2]{zadanie6.png}
 	\caption{\textit{Modyfikacja tabeli ``ZADANIA''}}
 \end{figure}
 
 \item Dodanie do tabeli \emph{ZADANIA} siedem przykładowych zadań powiązanych odpowiednią relacją z tabelą \emph{PRACOWNICY}. Jeden pracownik musi posiadać przynajmniej trzy zadania.
 
 \begin{lstlisting}[style=SQL, caption=\textit{Dodanie do tabeli ``ZADANIA''}]
+INSERT INTO ZADANIA (ID_ZADANIE, NAZWA, DATA_ROZPOCZECIA, DATA_ZAKONCZENIA, KOMENTARZ, ID_PRACOWNIKA) VALUES (1, 'ZADANIE 1', '2024-05-12', '2024-05-13', 'ZADANIE 1', 7369);
+
+INSERT INTO ZADANIA (ID_ZADANIE, NAZWA, DATA_ROZPOCZECIA, DATA_ZAKONCZENIA, KOMENTARZ, ID_PRACOWNIKA) VALUES (2, 'ZADANIE 2', '2024-05-13', '2024-05-14', 'ZADANIE 2', 7369);
+
+INSERT INTO ZADANIA (ID_ZADANIE, NAZWA, DATA_ROZPOCZECIA, DATA_ZAKONCZENIA, KOMENTARZ, ID_PRACOWNIKA) VALUES (3, 'ZADANIE 3', '2024-05-14', '2024-05-15', 'ZADANIE 3', 7369);
+
+INSERT INTO ZADANIA (ID_ZADANIE, NAZWA, DATA_ROZPOCZECIA, DATA_ZAKONCZENIA, KOMENTARZ, ID_PRACOWNIKA) VALUES (4, 'ZADANIE 4', '2024-05-15', '2024-05-16', 'ZADANIE 4', 7499);
+
+INSERT INTO ZADANIA (ID_ZADANIE, NAZWA, DATA_ROZPOCZECIA, DATA_ZAKONCZENIA, KOMENTARZ, ID_PRACOWNIKA) VALUES (5, 'ZADANIE 5', '2024-05-16', '2024-05-17', 'ZADANIE 5', 7499);
+
+INSERT INTO ZADANIA (ID_ZADANIE, NAZWA, DATA_ROZPOCZECIA, DATA_ZAKONCZENIA, KOMENTARZ, ID_PRACOWNIKA) VALUES (6, 'ZADANIE 6', '2024-05-17', '2024-05-18', 'ZADANIE 6', 7505);
+
+INSERT INTO ZADANIA (ID_ZADANIE, NAZWA, DATA_ROZPOCZECIA, DATA_ZAKONCZENIA, KOMENTARZ, ID_PRACOWNIKA) VALUES (7, 'ZADANIE 7', '2024-05-18', '2024-05-19', 'ZADANIE 7', 7505);
 \end{lstlisting}
 
 \begin{figure}[H]
 	\centering
+	\includegraphics[scale=1.2]{zadanie7.png}
 	\caption{\textit{Dodanie do tabeli ``ZADANIA''}}
 \end{figure}
 
-\item Wyświetlenie następującego wyniku z użyciem zapytania SQL(nagłówek tabeli wynikowej): ID\_PRACOWNIKA|NAZWISKO|IMIE|ILOSC ZADAN
+\item Wyświetlenie następującego wyniku z użyciem zapytania SQL(nagłówek tabeli wynikowej): ID\_PRACOWNIKA| NAZWISKO|IMIE|ILOSC ZADAN
 
 \begin{lstlisting}[style=SQL, caption=\textit{Wyświetlenie następującego wyniku z użyciem zapytania SQL}]
+SELECT P.ID_PRACOWNIKA, P.NAZWISKO, P.IMIE, COUNT(Z.ID_ZADANIE) AS "ILOSC ZADAN" FROM PRACOWNICY P LEFT JOIN ZADANIA Z ON P.ID_PRACOWNIKA = Z.ID_PRACOWNIKA GROUP BY P.ID_PRACOWNIKA, P.NAZWISKO, P.IMIE;
 \end{lstlisting}
 
 \begin{figure}[H]
 	\centering
+	\includegraphics[scale=1]{zadanie8.png}
 	\caption{\textit{Wyświetlenie następującego wyniku z użyciem zapytania SQL}}
 \end{figure}
 
-\item Wyświetlenie następującego wyniku z użyciem zapytania SQL(nagłówek tabeli wynikowej): ID\_PRACOWNIKA|NAZWISKO|IMIE|ILOSC TRWAJACYCH ZADAN
+\item Wyświetlenie następującego wyniku z użyciem zapytania SQL(nagłówek tabeli wynikowej): ID\_PRACOWNIKA| NAZWISKO|IMIE|ILOSC TRWAJACYCH ZADAN
 
 \begin{lstlisting}[style=SQL, caption=\textit{Wyświetlenie następującego wyniku z użyciem zapytania SQL}]
+SELECT P.ID_PRACOWNIKA, P.NAZWISKO, P.IMIE, COUNT(Z.ID_ZADANIE) AS "ILOSC TRWAJACYCH ZADAN" FROM PRACOWNICY P INNER JOIN ZADANIA Z ON P.ID_PRACOWNIKA = Z.ID_PRACOWNIKA WHERE Z.DATA_ZAKONCZENIA >= SYSDATE GROUP BY P.ID_PRACOWNIKA, P.NAZWISKO, P.IMIE;
 \end{lstlisting}
 
 \begin{figure}[H]
 	\centering
+	\includegraphics[scale=1.2]{zadanie9.png}
 	\caption{\textit{Wyświetlenie następującego wyniku z użyciem zapytania SQL}}
 \end{figure}
 
 \item Wyświetlenie wszystkich pracowników posiadających przynajmniej dwa zadania
 
 \begin{lstlisting}[style=SQL, caption=\textit{Wyświetlenie wszystkich pracowników posiadających przynajmniej dwa zadania}]
+SELECT P.ID_PRACOWNIKA, P.NAZWISKO, P.IMIE FROM PRACOWNICY P INNER JOIN ZADANIA Z ON P.ID_PRACOWNIKA = Z.ID_PRACOWNIKA GROUP BY P.ID_PRACOWNIKA, P.NAZWISKO, P.IMIE HAVING COUNT(Z.ID_ZADANIE) >= 2;
 \end{lstlisting}
 
 \begin{figure}[H]
 	\centering
+	\includegraphics[scale=1.2]{zadanie10.png}
 	\caption{\textit{Wyświetlenie wszystkich pracowników posiadających przynajmniej dwa zadania}}
 \end{figure}
 
