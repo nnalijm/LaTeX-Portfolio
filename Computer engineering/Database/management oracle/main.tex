@@ -36,26 +36,43 @@
 
 \begin{enumerate}
 	\item Tworzenie przestrzeni TABLESPACE o nazwie ``\emph{project\_tablespace}''.
+		\begin{lstlisting}[style=SQL, caption=\textit{Tworzenie przestrzeni TABLESPACE o nazwie ``project\_tablespace''}]
+		\end{lstlisting}
 	\item Tworzenie używtkownika dla nowej bazy danych oraz przestrzeni o danych:
 		\begin{itemize}
 			\item nazwa: ``student1''
 			\item hasło: zgodnym z dniem tworzenia np. ``07052023''
 		\end{itemize}
 		Przypisanie do konta użytwkownika przestrzeń ``\emph{project\_tablespace}'' oraz odpowiednie dostępy oraz role.
+		\begin{lstlisting}[style=SQL, caption=\textit{Tworzenie użytkownika}]
+		\end{lstlisting}
 	\item Wdrożenie bazy danych. 
+		\begin{lstlisting}[style=SQL, caption=\textit{Wdrożenie bazy danych}]
+		\end{lstlisting}
 	\item Tworzenie sekwencji ``\emph{student\_seq}'' dedykowaną dla studenta w przedziale od 0 do 10000.
+		\begin{lstlisting}[style=SQL, caption=\textit{Tworzenie sekwencji ``student\_seq''}]
+		\end{lstlisting}
 	\item Funkcja, która pozwala dodać nowego studenta (addStudent). Wykorzystanie utworzonej sekwencji ``\emph{student\_seq}'' dla ustalenia kolejnego ID. Zwracanie z funkcji ID dodanego studenta.
+		\begin{lstlisting}[style=SQL, caption=\textit{Funkcja, która dodaje nowego studenta}]
+		\end{lstlisting}
 	\item Wprowadzenie danych do tablicy. Wywołanie funkcji addStudent.
+		\begin{lstlisting}[style=SQL, caption=\textit{Wprowadzenie danych do tablicy}]
+		\end{lstlisting}
 	\item Tworzenie widoków odpowiedzialnych za:
 		\begin{itemize}
 			\item wyświetlenie wszystkich tematów projektów 
 			\item wyświetlenie wszystkich studentów, którzy nie mają przypisanego tematu
 		\end{itemize}
+		\begin{lstlisting}[style=SQL, caption=\textit{Tworzenie widoków}]
+		\end{lstlisting}
 	\item Zwracanie raportu do pliku o rozszerzeniu \emph{.csv} z informacją o nagłówku(kolumny):
 		\begin{itemize}
 			\item dane studenta(indeks, imię oraz nazwisko), nazwa projektu, ocena
 			\item zwracanie danych osób, które uzyskały pozytywną ocenę(większą lub równą niż 3.0)
 		\end{itemize}
+		\begin{lstlisting}[style=SQL, caption=\textit{Zwracanie raportu do pliku}]
+		
+		\end{lstlisting}
 \end{enumerate}
 
 \section{Wnioski}
