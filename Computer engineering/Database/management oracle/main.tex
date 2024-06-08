@@ -34,5 +34,34 @@
 
 \section{Realizacja}
 
+\begin{enumerate}
+	\item Tworzenie przestrzeni TABLESPACE o nazwie ``\emph{project\_tablespace}''.
+	\item Tworzenie używtkownika dla nowej bazy danych oraz przestrzeni o danych:
+		\begin{itemize}
+			\item nazwa: ``student1''
+			\item hasło: zgodnym z dniem tworzenia np. ``07052023''
+		\end{itemize}
+		Przypisanie do konta użytwkownika przestrzeń ``\emph{project\_tablespace}'' oraz odpowiednie dostępy oraz role.
+	\item Wdrożenie bazy danych. 
+	\item Tworzenie sekwencji ``\emph{student\_seq}'' dedykowaną dla studenta w przedziale od 0 do 10000.
+	\item Funkcja, która pozwala dodać nowego studenta (addStudent). Wykorzystanie utworzonej sekwencji ``\emph{student\_seq}'' dla ustalenia kolejnego ID. Zwracanie z funkcji ID dodanego studenta.
+	\item Wprowadzenie danych do tablicy. Wywołanie funkcji addStudent.
+	\item Tworzenie widoków odpowiedzialnych za:
+		\begin{itemize}
+			\item wyświetlenie wszystkich tematów projektów 
+			\item wyświetlenie wszystkich studentów, którzy nie mają przypisanego tematu
+		\end{itemize}
+	\item Zwracanie raportu do pliku o rozszerzeniu \emph{.csv} z informacją o nagłówku(kolumny):
+		\begin{itemize}
+			\item dane studenta(indeks, imię oraz nazwisko), nazwa projektu, ocena
+			\item zwracanie danych osób, które uzyskały pozytywną ocenę(większą lub równą niż 3.0)
+		\end{itemize}
+\end{enumerate}
+
+\section{Wnioski}
+
+Dzieki dzialaniom wykonanym podczas laboratorium udalo sie poszerzyć wiedze na temat baz danych oraz zrozumieć, jakie możliwości oferuja. Pozwolilo to nie tylko na zdobycie teoretycznej wiedzy, ale również na praktyczne zastosowanie różnych funkcji SQL w rzeczywistych scenariuszach.
+
+
 
 \end{document}
