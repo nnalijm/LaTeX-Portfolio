@@ -12,13 +12,13 @@ using namespace sf;
 
 class Button : public MyText {
 private:
-    float w, h; // ширина и высота кнопки
+    float w, h;
     SoundBuffer buffer;
-    Sound sound;   // звук
-    bool press;   // флаг нажатия
+    Sound sound;
+    bool press;
 
 public:
-    RectangleShape button; // сам квадрат
+    RectangleShape button;
 
     Button(float W, float H, string shribeName);
 

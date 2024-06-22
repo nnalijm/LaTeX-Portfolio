@@ -372,7 +372,6 @@ void initializeButtons()
 
 
 void calculateBombProbabilities() {
-    // Инициализация массива вероятностей нулями
     for (int r = 1; r <= width; r++) {
         for (int c = 1; c <= height; c++) {
             probabilities[r][c] = 0.0;

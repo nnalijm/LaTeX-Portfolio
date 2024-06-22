@@ -8,15 +8,370 @@
 \usepackage[T1]{fontenc}
 \usepackage{enumitem}
 \usepackage{caption}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{color}
 \usepackage{geometry}
 
+\graphicspath{{./figures}}
+
+\definecolor{backcolor}{HTML}{F2F2F2}
+
+\lstdefinestyle{CPP}{
+	language=C++,
+	backgroundcolor=\color{backcolor},
+	basicstyle=\footnotesize\ttfamily,
+	breaklines=true,
+	captionpos=b,
+	commentstyle=\color{green},
+	keywordstyle=\color{red},
+	stringstyle=\color{red},
+	showstringspaces=false,
+	tabsize=2,
+	frame=single,
+	numbers=left,
+	numbersep=5pt,
+}
 
 \begin{document}
 
 \begin{titlepage}
+	\begin{center}
+		\includegraphics[scale=0.7]{logo.png}
+
+		\vspace*{4cm}
+		\textbf{Zaawansowane programowanie w języku C++}
+
+		\vspace{1.5cm}
+		\textit{Saper}
+
+		\vspace{1.5cm}
+		\textbf{Stanislau Antanovich\\Mykhailo Buzdyhan\\Vladyslav Gotovchykov}
+
+		\vspace{4.5cm}
+	\end{center}
 \end{titlepage}
 
 \tableofcontents
-\listoffigures
+
+\newpage
+
+\section{Realizacja}
+
+\subsection{Klasa \textit{MyText}}
+\lstinputlisting[style=CPP, firstline=4, lastline=37]{./code/MyText.h}
+
+\subsubsection{Prywatne pola}
+\begin{itemize}
+	\item \textbf{string shribe}: Łańcuch znaków przechowujący początkowy tekts
+	\item \textbf{Font font}: Obiekt klasy SFML \emph{Font}, który służy do ładowania i używania określonej czcionki
+\end{itemize}
+\subsubsection{Publiczne pola}
+\begin{itemize}
+	\item \textbf{sf::Text txt}: Obiekt klasy SFML \emph{Text}, który repzenetuje tekst do wyświetlenia
+\end{itemize}
+\subsubsection{Konstruktory}
+\begin{itemize}
+	\item \textbf{MyText(string shribeName)}
+		\begin{itemize}
+			\item \textbf{Cel}: Inicjalizuje obiekt \emph{MyText} z podanym łańcuchem znaków \textbf{shribeName}
+			\item \textbf{Parametry}:
+				\begin{itemize}
+					\item \textbf{sting shribeName}; Początkowy tekst do wyświetlenia
+				\end{itemize}
+			\item \textbf{Operacje}
+				\begin{itemize}
+					\item Ładuje czcionkę z pliku ``\emph{fonts/bloodcrow.ttf}''
+					\item Ustawia czcionkę, rozmiar znaków(20) oraz kolor wypełnienia dla obiektu \emph{text}
+					\item Ustawia początkowy tekst na ``\emph{shribeName}''
+				\end{itemize}
+		\end{itemize}
+	\item \textbf{MyText()}
+		\begin{itemize}
+			\item \textbf{Cel}: Konstruktor domyślny, który inicjalizuje obiekt \textbf{MyText} pustym łańcuchem znaków
+			\item \textbf{Operacje}:
+				\begin{itemize}
+					\item Ładuje czcionkę z pliku ``\emph{fonts/bloodcrow.ttf}''
+					\item Ustawia czcionkę, rozmiar znaków(20) oraz kolor wypełnienia dla obiektu \emph{text}
+					\item Ustawia początkowy tekst na pusty łańcuch znaków
+				\end{itemize}
+		\end{itemize}
+\end{itemize}
+\subsubsection{Funkcje członkowskie}
+\begin{itemize}
+	\item \textbf{void sleditForSprite(Sprite\& s, float x, float y)}
+		\begin{itemize}
+			\item \textbf{Cel}: Ustawia pozycję tekstu względem pozycji podanego sprite'a \emph{s}
+			\item \textbf{Parametry}:
+				\begin{itemize}
+					\item \textbf{Sprite\& s}: Referencja do obiektu klasy SFML \emph{Sprite}
+					\item \textbf{float x}: Przesunięcie w osi X względem pozycji sprite'a
+					\item \textbf{float y}: Przesunięcie w osi Y względem pozycji sprite'a
+				\end{itemize}
+			\item \textbf{Operacje}: Ustawia pozycję obiektu \emph{txt} na podstawie pozycji sprite'a oraz podanych przesunięć
+		\end{itemize}
+	\item \textbf{void getChislo(float n)}
+		\begin{itemize}
+			\item \textbf{Cel}: Dodaje wartość liczbową \emph{n} do istniejącego tekstu
+			\item \textbf{Parametry}: \textbf{float n}: Liczba, która zostanie przekonwertowana na łańcuch znaków i dodana
+			\item \textbf{Operacje}:
+				\begin{itemize}
+					\item Konwertuje liczbę \emph{n} na łańcuch znaków przy użyciu \emph{ostringstream}
+					\item Ustawia tekst obiektu \emph{txt} na oryginalny łańcuch \emph{shribe} połączony z łańcuchem reprezentującym liczbę
+				\end{itemize}
+		\end{itemize}
+	\item \textbf{void setString(string name)}
+		\begin{itemize}
+			\item \textbf{Cel}: Ustawia tekst na określony łańcuch znaków \emph{name}
+			\item \textbf{Parametry}: \textbf{string name}: Nowy tekst do wyświetlenia
+			\item \textbf{Operacje}: Ustawia tekst obiektu \emph{txt} na \emph{name}
+		\end{itemize}
+	\item \textbf{void setPosition(float x, float y)}
+		\begin{itemize}
+			\item \textbf{Cel}: Ustawia pozycję tekstu
+			\item \textbf{Parametry}:
+				\begin{itemize}
+					\item \textbf{float x}: Współrzędna X pozycji tekstu
+					\item \textbf{float y}: Współrzędna Y pozycji tekstu
+				\end{itemize}
+			\item \textbf{Operacje}: Ustawia pozycję obiektu \emph{txt} na (x, y)
+		\end{itemize}
+	\item \textbf{void setFillTextColor(float R, float G, float B)}
+		\begin{itemize}
+			\item \textbf{Cel}: Ustawia kolor tekstu
+			\item \textbf{Parametry}:
+				\begin{itemize}
+					\item \textbf{float R}: Składowa czerwona koloru (0-255)
+					\item \textbf{float G}: Składowa zielona koloru (0-255)
+					\item \textbf{float B}: Składowa niebieska koloru (0-255)
+				\end{itemize}
+			\item \textbf{Operacje}: Ustawia kolor wypełnienia obiektu \emph{txt} przy użyciu wartości RGB
+		\end{itemize}
+	\item \textbf{void setCharacterSize(float a)}
+		\begin{itemize}
+			\item \textbf{Cel}: Ustawia rozmiar znaków tekstu
+			\item \textbf{Parametry}: \textbf{float a}: Nowy rozmiar znaków
+			\item \textbf{Operacje}: Ustawia rozmiar znaków obiektu \emph{txt} na \emph{a}
+		\end{itemize}
+	\item \textbf{void draw(RenderWindow\& window)}
+		\begin{itemize}
+			\item \textbf{Cel}: Rysuje tekst w podanym oknie renderowania
+			\item \textbf{Parametry}:
+				\begin{itemize}
+					\item \textbf{RenderWindow\& window}: Referencja do obiektu klasy SFML \textbf{RenderWindow}
+				\end{itemize}
+			\item \textbf{Operacje}: Rysuje obiekt \emph{txt} w podanym oknie renderowania
+		\end{itemize}
+
+\end{itemize}
+\subsubsection{Wnioski}
+Klasa MyText kapsułkuje funkcjonalności związane z wyświetlaniem tekstu w bibliotece SFML, zapewniając metody do inicjalizacji, ustawiania pozycji, koloru, rozmiaru znaków oraz renderowania tekstu w graficznej aplikacji. Konstruktory ustawiają czcionkę oraz początkowy tekst, a funkcje członkowskie umożliwiają dynamiczne aktualizacje i wyświetlanie tekstu w oknie aplikacji.
+
+\subsection{Klasa \textit{Button}}
+\lstinputlisting[style=CPP, firstline=4]{./code/Button.h}
+\subsubsection{Prywatne pola}
+\begin{itemize}
+	\item \textbf{float w, h}: Szerokość i wysokość przycisku
+	\item \textbf{SoundBuffer buffer}: Bufor dźwięku używany do przechowywania danych dźwiękowych
+	\item \textbf{Sound sound}: Obiekt dźwięku, który odtwarza dźwięk
+	\item \textbf{bool press}: Flaga oznaczająca, czy przycisk jest wciśnięty
+\end{itemize}
+\subsubsection{Publiczne pola}
+\begin{itemize}
+	\item \textbf{RectangleShape button}: Obiekt kształtu prostokąta, który reprezentuje wizualny wygląd przycisku
+\end{itemize}
+\subsubsection{Konstruktory}
+\begin{itemize}
+	\item \textbf{Button(float W, float H, string shribeName)}
+		\begin{itemize}
+			\item \textbf{Cel}: Inicjalizuje obiekt Button z podanymi szerokością W, wysokością H oraz tekstem shribeName
+			\item \textbf{Parametry}
+				\begin{itemize}
+					\item float W: Szerokość przycisku
+					\item float H: Wysokość przycisku
+					\item string shribeName: Tekst wyświetlany na przycisku
+				\end{itemize}
+			\item \textbf{Operacje}
+				\begin{itemize}
+					\item Wywołuje konstruktor klasy bazowej MyText z shribeName
+					\item Ustawia szerokość w i wysokość h
+					\item Ustawia flagę press na false
+					\item Ustawia rozmiar prostokąta button
+					\item Ustawia pozycję tekstu txt na pozycję prostokąta button
+				\end{itemize}
+		\end{itemize}
+\end{itemize}
+\subsubsection{Funkcje członkowskie}
+\begin{itemize}
+	\item \textbf{void sleditForSprite(Sprite\& s, float x, float y)}
+		\begin{itemize}
+			\item \textbf{Cel}: Ustawia pozycję przycisku względem pozycji podanego sprite'a s
+			\item \textbf{Parametry}:
+				\begin{itemize}
+					\item Sprite\& s: Referencja do obiektu klasy SFML Sprite
+					\item float x: Przesunięcie w osi X względem pozycji sprite'a
+					\item float y: Przesunięcie w osi Y względem pozycji sprite'a
+				\end{itemize}
+			\item \textbf{Operacje}: Ustawia pozycję prostokąta button oraz tekstu txt na podstawie pozycji sprite'a oraz podanych przesunięć
+		\end{itemize}
+	\item \textbf{void draw(RenderWindow\& window)}
+		\begin{itemize}
+			\item \textbf{Cel}: Rysuje przycisk i tekst w podanym oknie renderowania
+			\item \textbf{Parametry}: RenderWindow\& window: Referencja do obiektu klasy SFML RenderWindow
+			\item \textbf{Operacje}:
+				\begin{itemize}
+					\item Ustawia pozycję tekstu txt na pozycję prostokąta button
+					\item Rysuje prostokąt button oraz tekst txt w podanym oknie renderowania
+				\end{itemize}
+		\end{itemize}
+	\item \textbf{bool pressed(Event\& event, Vector2i mousePosition)}
+		\begin{itemize}
+			\item \textbf{Cel}: Sprawdza, czy przycisk został naciśnięty
+			\item \textbf{Parametry}:
+				\begin{itemize}
+					\item Event\& event: Referencja do obiektu klasy SFML Event
+					\item Vector2i mousePosition: Pozycja myszy
+				\end{itemize}
+			\item \textbf{Operacje}:
+				\begin{itemize}
+					\item Sprawdza, czy przycisk został naciśnięty lewym przyciskiem myszy i aktualizuje flagę press
+					\item  Zwraca true, jeśli przycisk został naciśnięty, w przeciwnym razie false
+				\end{itemize}
+		\end{itemize}
+	\item \textbf{bool navediaMouse(Event\& event, Vector2i mousePosition)}
+		\begin{itemize}
+			\item \textbf{Cel}: Sprawdza, czy kursor myszy znajduje się nad przyciskiem
+			\item \textbf{Parametry}:
+				\begin{itemize}
+					\item Event\& event: Referencja do obiektu klasy SFML Event
+					\item Vector2i mousePosition: Pozycja myszy
+				\end{itemize}
+			\item \textbf{Operacje}: Zwraca true, jeśli kursor myszy znajduje się nad przyciskiem, w przeciwnym razie false
+		\end{itemize}
+	\item \textbf{void getSound(string failAudio)}
+		\begin{itemize}
+			\item \textbf{Cel}: Ładuje dźwięk z pliku
+			\item \textbf{Parametry}: string failAudio: Ścieżka do pliku dźwiękowego
+			\item \textbf{Operacje}:
+				\begin{itemize}
+					\item Ładuje dźwięk z pliku failAudio do bufora buffer
+					\item Ustawia bufor buffer dla obiektu sound
+				\end{itemize}
+		\end{itemize}
+	\item \textbf{void soundPlay()}
+		\begin{itemize}
+			\item \textbf{Cel}: Odtwarza dźwięk
+			\item \textbf{Operacje}: Odtwarza dźwięk za pomocą obiektu sound
+		\end{itemize}
+	\item \textbf{void soundSetVolume(int volume)}
+		\begin{itemize}
+			\item \textbf{Cel}: Ustawia głośność dźwięku
+			\item \textbf{Parametry}: int volume: Poziom głośności
+			\item \textbf{Operacje}: Ustawia głośność dźwięku sound na wartość volume
+		\end{itemize}
+	\item \textbf{void setButtonSize(float W, float H)}
+		\begin{itemize}
+			\item \textbf{Cel}: Ustawia rozmiar przycisku
+			\item \textbf{Parametry}:
+				\begin{itemize}
+					\item float W: Nowa szerokość przycisku
+					\item float H: Nowa wysokość przycisku
+				\end{itemize}
+			\item \textbf{Operacje}
+				\begin{itemize}
+					\item Ustawia szerokość w i wysokość h
+					\item Ustawia rozmiar prostokąta button
+				\end{itemize}
+		\end{itemize}
+	\item \textbf{void setOringCenter()}
+		\begin{itemize}
+			\item \textbf{Cel}: Ustawia środek prostokąta button jako jego punkt oryginalny
+			\item \textbf{Operacje}: Ustawia punkt oryginalny prostokąta button na (w / 2, h / 2)
+		\end{itemize}
+	\item \textbf{void setPosition(float x, float y)}
+		\begin{itemize}
+			\item \textbf{Cel}: Ustawia pozycję przycisku
+			\item \textbf{Parametry}:
+				\begin{itemize}
+					\item float x: Współrzędna X pozycji przycisku
+					\item float y: Współrzędna Y pozycji przycisku
+				\end{itemize}
+			\item \textbf{Operacje}: Ustawia pozycję prostokąta button na (x, y)
+		\end{itemize}
+	\item \textbf{void setFillRacktengelColor(float R, float G, float B)}
+		\begin{itemize}
+			\item \textbf{Cel}: Ustawia kolor wypełnienia prostokąta button
+			\item \textbf{Parametry}:
+				\begin{itemize}
+					\item float R: Składowa czerwona koloru (0-255)
+					\item float G: Składowa zielona koloru (0-255)
+					\item float B: Składowa niebieska koloru (0-255)
+				\end{itemize}
+			\item \textbf{Operacje}: Ustawia kolor wypełnienia prostokąta button przy użyciu wartości RGB.
+		\end{itemize}
+\end{itemize}
+\subsubsection{Wnioski}
+Klasa Button rozszerza funkcjonalność klasy MyText o obsługę graficznych przycisków. Umożliwia tworzenie przycisków o określonych rozmiarach, pozycjach i kolorach, które mogą reagować na kliknięcia myszy. Dodatkowo, klasa ta obsługuje odtwarzanie dźwięków, co pozwala na dodanie efektów dźwiękowych do interakcji z przyciskiem.
+
+
+\subsection{Plik \textit{Main}}
+\lstinputlisting[style=CPP, firstline=4]{./code/main.cpp}
+
+\subsubsection{Główne zmienne globalne}
+\begin{itemize}
+	\item const int MAXN = 17: Stała określająca maksymalny rozmiar siatki gry.
+	\item int grid[MAXN][MAXN]{}: Siatka przechowująca rzeczywisty stan gry (czy w komórce jest mina).
+	\item int sgrid[MAXN][MAXN]{}: Siatka widziana przez gracza (to, co gracz widzi na planszy).
+	\item int used[MAXN][MAXN]{}: Siatka przechowująca informacje o tym, które komórki zostały już odkryte.
+	\item int probabilities[MAXN][MAXN]: Siatka przechowująca obliczone prawdopodobieństwa wystąpienia min.
+	\item int width, height: Szerokość i wysokość planszy (10x10).
+	\item int numberOfFlags: Liczba flag umieszczonych przez gracza.
+	\item bool dead: Flaga oznaczająca, czy gracz zginął.
+	\item bool won: Flaga oznaczająca, czy gracz wygrał.
+	\item int showProbs: Flaga określająca, czy mają być wyświetlane prawdopodobieństwa min.
+	\item bool isFirstMoveMade: Flaga oznaczająca, czy został wykonany pierwszy ruch.
+	\item float gameTime: Czas gry.
+	\item int numberOfEmptyCells: Liczba pustych komórek na planszy.
+	\item int flag: Flaga używana do sterowania zegarem.
+	\item int bombChance: Prawdopodobieństwo wystąpienia miny.
+\end{itemize}
+
+\subsubsection{Obiekty przycisków}
+\begin{itemize}
+	\item \textbf{Button replayButton(105, 40, "Replay")}: Przycisk do rozpoczęcia nowej gry
+	\item \textbf{Button aiProcentButton(50, 40, " AI")}: Przycisk do włączenia/wyłączenia wyświetlania prawdopodobieństw min.
+\end{itemize}
+\subsubsection{Funkcje}
+\begin{itemize}
+	\item clearAreaAround: Odkrywa komórki wokół danej komórki.
+	\item openCell: Odkrywa daną komórkę i, jeśli jest pusta, odkrywa również komórki wokół niej.
+	\item showDisplay: Wyświetla aktualny stan planszy i inne elementy interfejsu (np. licznik bomb, czas gry, komunikaty o wygranej/przegranej).
+	\item dealWithEvent: Obsługuje zdarzenia (kliknięcia myszką, zamknięcie okna itp.).
+	\item numberOfFlagsAround: Liczy liczbę flag wokół danej komórki.
+	\item initializeGameField: Inicjalizuje planszę gry, losując położenie min.
+	\item calculateNumberOfBombsAroundTheField: Oblicza liczbę min wokół każdej komórki na planszy.
+	\item win: Ustawia stan gry na wygrany i oznacza wszystkie pozostałe komórki jako oznaczone flagą.
+	\item initializeButtons: Inicjalizuje przyciski gry (ustawia ich wygląd i pozycję).
+	\item calculateBombProbabilities: Oblicza prawdopodobieństwo wystąpienia min w nieodkrytych komórkach.
+	\item calculateNumberAroundCell: Liczy liczbę komórek o danej wartości wokół określonej komórki.
+	\item showProbabilities: Wyświetla prawdopodobieństwa wystąpienia min na planszy.
+\end{itemize}
+
+\subsubsection{Główna funkcja \textbf{main}}
+\begin{enumerate}
+	\item Inicjalizuje okno gry.
+	\item Wczytuje tekstury dla kafelków i tła.
+	\item Inicjalizuje przyciski i planszę gry.
+	\item Obsługuje główną pętlę gry:
+		\begin{itemize}
+			\item Pobiera aktualną pozycję myszy.
+			\item Jeśli pierwszy ruch nie został wykonany, resetuje licznik czasu.
+			\item Jeśli gra została zakończona (wygrana lub przegrana), zatrzymuje licznik czasu.
+			\item Obsługuje zdarzenia (np. kliknięcia myszką).
+			\item Wyświetla aktualny stan gry
+		\end{itemize}
+\end{enumerate}
+\subsubsection{Wnioski}
+Ten kod stanowi kompletną implementację klasycznej gry w "Saper" z dodatkową funkcjonalnością wyświetlania prawdopodobieństw wystąpienia min oraz przyciskami do restartu gry i włączenia/wyłączenia wyświetlania prawdopodobieństw.
 
 \end{document}
